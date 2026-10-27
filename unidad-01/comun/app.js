@@ -75,7 +75,7 @@
   function crecerLectura(caja) {
     var texto = caja.querySelector('.ruta-texto');
     caja.classList.remove('apretada', 'sin-arte', 'mini');
-    if (texto) for (var fs = 18; fs > 14.2; fs -= 0.5) { caja.style.setProperty('--fs', fs + 'px'); if (cabe(texto, 4)) return; }
+    if (texto) for (var fs = 18; fs > 14.2; fs -= 0.5) { caja.style.setProperty('--fs', fs + 'px'); if (cabe(texto, 4) && caja.scrollHeight <= caja.clientHeight + 1) return; }
     caja.style.removeProperty('--fs'); ajustarLectura(caja);
   }
   function reanimar(el) { el.classList.remove('aparece'); void el.offsetWidth; el.classList.add('aparece'); }
