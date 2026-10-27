@@ -220,7 +220,30 @@
     barra.setAttribute('aria-valuenow', String(vistos));
     barra.setAttribute('aria-label', 'Avance: ' + vistos + ' de ' + total);
     barra.firstChild.style.width = (100 * vistos / total) + '%';
+    var yaCompleto = barra.classList.contains('completo');
     barra.classList.toggle('completo', vistos >= total);
+    if (!yaCompleto && vistos >= total) celebrar(barra);
+  }
+  /* Celebración al completar la exploración (como en el motor de Audiencias, 27/10/2026): confeti en su propia capa,
+     por encima de toda la escena, que sale de la barra de avance y cae. Solo tras una acción del usuario; sin animación
+     si el usuario la reduce. */
+  var celebrarListo = false;
+  function celebrar(desde) {
+    if (!celebrarListo || (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches)) return;
+    var b = desde.getBoundingClientRect(), capa = document.createElement('div'), c = document.createElement('div');
+    capa.className = 'confeti-capa'; capa.setAttribute('aria-hidden', 'true'); c.className = 'confeti';
+    c.style.left = (b.left + b.width / 2) + 'px'; c.style.top = (b.top + b.height / 2) + 'px';
+    for (var k = 0; k < 48; k++) {
+      var p = document.createElement('i');
+      p.style.setProperty('--x', ((Math.random() - 0.5) * innerWidth * 0.9) + 'px');
+      p.style.setProperty('--s', (20 + Math.random() * 60) + 'px');
+      p.style.setProperty('--y', ((innerHeight - b.top) * (0.4 + Math.random() * 0.55)) + 'px');
+      p.style.setProperty('--r', (Math.random() * 900 - 450) + 'deg');
+      p.style.setProperty('--t', (Math.random() * 0.25) + 's');
+      c.appendChild(p);
+    }
+    capa.appendChild(c); document.body.appendChild(capa);
+    setTimeout(function () { capa.remove(); }, 2400);
   }
   raiz.addEventListener('click', function (ev) { marcar(ev.target.closest && ev.target.closest(VISTOS)); });
   raiz.addEventListener('keyup', function (ev) {
@@ -228,6 +251,7 @@
     if (t) marcar(t);
   });
   [].forEach.call(raiz.querySelectorAll('[role=tab][aria-selected=true]'), marcar);
+  setTimeout(function () { celebrarListo = true; }, 600); /* lo marcado al cargar no se celebra */
 
   /* Carrusel de páginas (patrón de Juan, caso1.html): el texto largo se pagina dentro de la
      escena, con «Anterior / Siguiente», puntos y «Página n de N». Una página con data-visto
