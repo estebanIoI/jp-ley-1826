@@ -39,6 +39,8 @@
   .conductas{list-style:none;padding:0;display:flex;flex-direction:column;gap:3px}
   .conductas li{position:relative;padding:3px 8px 3px 20px;font-size:14px;line-height:1.36;border-radius:6px}
   .conductas li:nth-child(odd){background:var(--hielo)}
+  /* Juan (27/10/2026): mayúscula inicial en cada conducta del catálogo; el texto de la ficha no cambia. */
+  .conductas li::first-letter,.conducta>p::first-letter{text-transform:uppercase}
   .conductas li::before{content:"";position:absolute;left:7px;top:10px;width:6px;height:6px;border-radius:50%;background:var(--teal)}
   .num b{color:var(--oxido)}
 
