@@ -1,0 +1,237 @@
+<!doctype html>
+<!-- Ley 1826 de 2017 · Unidad 1 · Lección 1 · B: Vigencia y ámbito temporal (revisión 3: escenario completo, navegación interna al pie)
+     Fuente: ficha de la Unidad 1, pp. 3-4 («1. Vigencia y ámbito temporal de aplicación»), reglas a) y b) completas.
+     Todo texto marcado con data-f es textual de la ficha; verificar con herramientas/verificar_cobertura.py -->
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vigencia y ámbito temporal · Lección 1 · Ley 1826 de 2017</title>
+<link rel="stylesheet" href="../comun/assets/vendor/fontawesome.min.css">
+<link rel="stylesheet" href="../comun/assets/vendor/solid.min.css">
+<link rel="stylesheet" href="../comun/base.css?v=conexion-1">
+<style>
+  .opciones{display:flex;gap:8px;flex-wrap:wrap}
+  /* B1 · eje temporal con revelación de reglas */
+  .eje{position:relative;flex:1;min-height:0;display:flex;flex-direction:column;gap:6px}
+  .eje-clave{position:absolute;top:12%;left:50%;z-index:3;translate:-50% 0;display:inline-flex;align-items:center;gap:9px;white-space:nowrap;padding:8px 15px;background:var(--teal);color:var(--blanco);border:2px solid var(--blanco);border-radius:999px;box-shadow:0 4px 10px rgba(0,42,55,.2);font:800 13px Montserrat,Arial,sans-serif;cursor:pointer}
+  .eje-clave i{color:var(--crema)}
+  .eje-clave:not(.visto)::after{content:"";position:absolute;inset:-6px;border:2px solid var(--oxido);border-radius:999px;pointer-events:none;animation:pulso 1.8s ease-in-out infinite}
+  .eje>.capa{left:13%;right:13%;bottom:17%;z-index:7;font-size:14.5px}
+  @media(max-width:520px){.eje-clave{top:8%;font-size:11px;padding:6px 9px}.eje>.capa{left:4%;right:4%;bottom:13%;font-size:13px}}
+  .eje-dibujo{flex:1;min-height:120px;display:flex}
+  .eje-dibujo svg{width:100%;height:100%}
+  .reglas{flex:none;display:grid;grid-template-columns:1fr 1fr;gap:12px;align-items:start}
+  .regla{background:var(--blanco);border:2px solid var(--niebla);border-radius:12px;box-shadow:0 3px 12px rgba(0,0,0,.06);transition:border-color .3s,background .3s}
+  .regla.abierta{border-color:var(--teal)}
+  .regla.despues.abierta{border-color:var(--oxido)}
+  .regla h3{margin:0}
+  .regla-btn{width:100%;display:flex;align-items:center;gap:10px;border:0;background:none;padding:9px 12px;font:700 14.5px/1.3 Montserrat,Arial,sans-serif;color:var(--marino);text-align:left;cursor:pointer}
+  .regla.despues .regla-btn{justify-content:flex-end;text-align:right}
+  .regla-btn i{flex:none;display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--teal);color:var(--blanco);font-size:14px;transition:transform .3s}
+  .regla.despues .regla-btn i{background:var(--oxido)}
+  .regla-btn[aria-expanded=false] i{animation:pulso 1.8s ease-in-out infinite}
+  .regla-btn[aria-expanded=true] i{transform:scale(.85)}
+  .regla{position:relative}
+  .regla-txt{position:absolute;left:0;right:0;bottom:calc(100% + 9px);z-index:6;max-height:290px;overflow:auto;background:var(--blanco);border:2px solid var(--teal);border-radius:12px;padding:12px 14px;font-size:14.5px;line-height:1.42;box-shadow:0 12px 30px rgba(0,42,55,.22);animation:revela .35s ease both}
+  .regla.despues .regla-txt{border-color:var(--oxido)}
+  .regla-cerrar{display:block;margin:9px 0 0 auto;border:2px solid var(--marino);border-radius:999px;background:var(--blanco);color:var(--marino);padding:3px 12px;font:700 12px Montserrat,Arial,sans-serif}
+  .regla-txt p+p{margin-top:7px}
+  .regla-alerta{display:flex;gap:9px;background:var(--coral);color:var(--cafe);border-radius:8px;padding:7px 10px}
+  .regla-alerta i{color:var(--oxido);margin-top:4px}
+  @keyframes revela{from{opacity:0;translate:0 8px}to{opacity:1;translate:0 0}}
+  @keyframes pulso{0%,100%{box-shadow:0 0 0 0 rgba(48,97,91,.45)}50%{box-shadow:0 0 0 7px rgba(48,97,91,0)}}
+  .lado-a,.lado-b{opacity:.45;transition:opacity .5s}
+  .eje[data-b] .lado-b,.eje[data-a] .lado-a{opacity:1}
+  .eje .avanza{transition:translate 1s cubic-bezier(.4,.1,.3,1)}
+  .eje[data-a] .lado-a .avanza{translate:70px 0}
+  .eje[data-b] .lado-b .avanza{translate:-40px 0}
+  .b-zona{position:relative;flex:1;min-height:0;display:flex;flex-direction:column;gap:8px}
+  .b-zona .lamina{flex:1;min-height:0;height:auto;width:auto;max-width:100%;align-self:center}
+  .b-lectura{position:absolute;top:4%;left:5%;right:5%;z-index:5;display:flex;flex-direction:column;gap:8px;min-width:0;overflow:visible}
+  .b-zona:has(.capa:not([hidden])) .b-lectura{top:2%;bottom:2%;left:auto;right:2%;width:53%;justify-content:center}
+  .b-zona:has(#b-despues:not([hidden])) .b-lectura{left:2%;right:auto}
+  .b-lectura .capa.en-texto{border:3px solid var(--blanco);padding:10px 12px 8px;font-size:14px;line-height:1.36;max-height:100%;overflow:auto;box-shadow:0 14px 32px rgba(0,27,37,.28)}
+  .b-lectura .pregunta-b{background:var(--blanco);color:var(--tinta);border:2px solid var(--niebla);border-radius:10px;padding:9px 12px;display:flex;flex-direction:column;align-items:flex-start;gap:7px}
+  .b-lectura .vacio{border:2px dashed var(--teal);border-radius:12px;padding:10px 14px;color:var(--gris);font-size:14px;line-height:1.4;background:var(--fondo)}
+  .b-lectura .vacio strong{color:var(--marino)}
+  .b-ruta{display:inline-flex;align-items:center;gap:7px;align-self:flex-start;background:var(--crema);color:var(--marino);border-radius:999px;padding:3px 10px;font:800 12px Montserrat,Arial,sans-serif}
+  .b-lectura .capa .cerrar{margin-top:2px}
+  .caminante{transition:translate 1.1s cubic-bezier(.4,.1,.3,1)}
+  .escena[data-estado=b-despues] .caminante{translate:200px 0}
+  .escena[data-estado=b-antes] .caminante{translate:-185px 0}
+  .escena[data-estado=b-antes] .lamina[data-imp=si] .caminante{translate:-290px 0}
+  .escena[data-estado=b-antes] .lamina[data-imp=no] .caminante{translate:-160px 0}
+  .puertas-antes,.puerta-despues{opacity:0;transition:opacity .5s}
+  .fecha-tag{opacity:0;transition:opacity .35s}
+  .escena[data-estado] .fecha-tag{opacity:1}
+  .escena[data-estado=b-antes] .puertas-antes,.escena[data-estado=b-despues] .puerta-despues{opacity:1}
+  .escena[data-estado] .b-lectura .vacio{display:none}
+  .opciones .btn[aria-expanded=true]{background:var(--oxido);border-color:var(--oxido);color:var(--blanco)}
+  .pregunta{font:700 14.5px/1.35 Montserrat,Arial,sans-serif;color:var(--marino)}
+  .pregunta-b .alerta{display:flex;gap:10px;background:var(--coral);color:var(--cafe);border-radius:8px;padding:9px 12px;font-size:15px}
+  .pregunta-b .alerta i{color:var(--oxido);margin-top:4px}
+  .si-no{display:flex;gap:8px}
+  .resultado{display:flex;gap:10px;background:var(--teal);color:var(--blanco);font-size:15px;border-radius:8px;padding:9px 12px;font-weight:700}
+  .resultado i{margin-top:4px}
+  .hoja-cal{transform-box:fill-box;transform-origin:top center;animation:hoja 1.2s .3s ease both}
+  @keyframes hoja{from{rotate:-14deg;opacity:0}to{rotate:0deg;opacity:1}}
+</style>
+</head>
+<body>
+<main class="ova" data-ova>
+
+  <!-- Escena 1 · p. 3, apartado 1, párrafo introductorio -->
+  <section class="escena" data-titulo="Vigencia plena" data-lectura-integrada>
+    <div class="texto">
+      <h2 class="titulo">Vigencia plena</h2>
+    </div>
+    <!-- Eje temporal con revelación de reglas (lámina de referencia 03): antes a la izquierda, después a la derecha -->
+    <div class="eje" id="eje">
+      <button class="eje-clave" type="button" data-capa="b1-fecha" data-visto><i class="fas fa-calendar-days" aria-hidden="true"></i>13 de julio de 2017 · Pulsa aquí</button>
+      <div class="eje-dibujo"><svg viewBox="0 0 740 200" preserveAspectRatio="xMidYMid meet" data-dibujo="eje" aria-hidden="true"></svg></div>
+      <div class="capa" id="b1-fecha" aria-label="Vigencia plena"><h3>Vigencia plena</h3><p><span data-f>La Ley 1826 de 2017 entró en vigencia plena el 13 de julio de 2017.</span> <span data-f>El ámbito temporal de aplicación se rige por las siguientes reglas operativas:</span></p></div>
+      <div class="reglas" role="group" aria-label="Reglas operativas">
+        <article class="regla antes">
+          <h3><button type="button" class="regla-btn" data-visto data-regla="b" aria-expanded="false" aria-controls="regla-b"><i class="fas fa-arrow-left" aria-hidden="true"></i><span>b) Con anterioridad al 13 de julio de 2017</span></button></h3>
+          <div class="regla-txt" id="regla-b" hidden>
+            <p><span data-f>Conductas cometidas con anterioridad al 13 de julio de 2017: se tramitan bajo el procedimiento abreviado <strong>únicamente si</strong> a la fecha de entrada en vigencia de la ley <strong>no se había formulado imputación de cargos</strong> conforme al procedimiento ordinario de la Ley 906 de 2004.</span></p>
+            <p class="regla-alerta"><i class="fas fa-triangle-exclamation" aria-hidden="true"></i><span data-f>Si ya existía imputación, el proceso debe culminar bajo la cuerda del <strong>procedimiento ordinario</strong>.</span></p>
+            <button class="regla-cerrar" type="button">Cerrar</button>
+          </div>
+        </article>
+        <article class="regla despues">
+          <h3><button type="button" class="regla-btn" data-visto data-regla="a" aria-expanded="false" aria-controls="regla-a"><span>a) Con posterioridad al 13 de julio de 2017</span><i class="fas fa-arrow-right" aria-hidden="true"></i></button></h3>
+          <div class="regla-txt" id="regla-a" hidden>
+            <p><span data-f>Conductas cometidas con posterioridad al 13 de julio de 2017: se tramitan de forma <strong>obligatoria y exclusiva por el trámite abreviado</strong>, siempre que la conducta esté incluida en el <strong>catálogo de procedencia</strong>.</span></p>
+            <button class="regla-cerrar" type="button">Cerrar</button>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Escena 2 · p. 4, reglas a) y b): ejercicio de decisión en la línea de tiempo -->
+  <section class="escena ancho" data-titulo="Reglas operativas" hidden>
+    <div class="texto">
+      <p class="tipo"><i class="fas fa-screwdriver-wrench" aria-hidden="true"></i>Ejercicio práctico</p>
+      <h2 class="titulo">¿Cuándo se cometió la conducta?</h2>
+      <div class="opciones" role="group" aria-label="Momento de comisión de la conducta">
+        <button class="btn sec" type="button" data-capa="b-antes"><i class="fas fa-arrow-left" aria-hidden="true"></i>Antes del 13 de julio de 2017</button>
+        <button class="btn sec" type="button" data-capa="b-despues">Después del 13 de julio de 2017<i class="fas fa-arrow-right" aria-hidden="true"></i></button>
+      </div>
+    </div>
+    <div class="b-zona">
+      <div class="lamina" id="linea">
+        <svg viewBox="0 0 700 428" data-dibujo="linea"></svg>
+      </div>
+      <div class="b-lectura" aria-live="polite">
+        <p class="vacio"><strong><span data-f>La Ley 1826 de 2017 entró en vigencia plena el 13 de julio de 2017.</span></strong><br>Elige si la conducta ocurrió antes o después. Si fue antes, responde si ya había imputación.</p>
+        <div class="capa en-texto" id="b-despues" aria-labelledby="b-despues-t">
+          <h3 id="b-despues-t">a) Conductas cometidas con posterioridad al 13 de julio de 2017</h3>
+          <p class="b-ruta"><i class="fas fa-arrow-right" aria-hidden="true"></i>Trámite abreviado si está en el catálogo</p>
+          <p><span data-f>Conductas cometidas con posterioridad al 13 de julio de 2017: se tramitan de forma <strong>obligatoria y exclusiva por el trámite abreviado</strong>, siempre que la conducta esté incluida en el <strong>catálogo de procedencia</strong>.</span></p>
+        </div>
+        <div class="capa en-texto" id="b-antes" aria-labelledby="b-antes-t">
+          <h3 id="b-antes-t">b) Conductas cometidas con anterioridad al 13 de julio de 2017</h3>
+          <p><span data-f>Conductas cometidas con anterioridad al 13 de julio de 2017: se tramitan bajo el procedimiento abreviado <strong>únicamente si</strong> a la fecha de entrada en vigencia de la ley <strong>no se había formulado imputación de cargos</strong> conforme al procedimiento ordinario de la Ley 906 de 2004.</span></p>
+          <div class="pregunta-b" id="pregunta-b" hidden>
+            <p class="pregunta">Para decidir la ruta: ¿ya existía imputación de cargos?</p>
+            <div class="si-no" role="group" aria-label="Imputación previa">
+              <button class="btn sec" type="button" data-imp="no" aria-pressed="false">No, aún no</button>
+              <button class="btn sec" type="button" data-imp="si" aria-pressed="false">Sí, ya existía</button>
+            </div>
+            <p class="resultado" id="r-no" hidden><i class="fas fa-circle-info" aria-hidden="true"></i><span>Resultado: procedimiento abreviado.</span></p>
+            <p class="alerta" id="r-si" hidden><i class="fas fa-triangle-exclamation" aria-hidden="true"></i><span><span data-f>Si ya existía imputación, el proceso debe culminar bajo la cuerda del <strong>procedimiento ordinario</strong>.</span></span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+<script src="../comun/personajes.js"></script>
+<script src="../comun/objetos-juridicos.js"></script>
+<script>
+  window.DIBUJOS = {
+    eje: function (P) {
+      var C = P.C, o = P.obj, s = '';
+      s += '<defs><linearGradient id="g-eje" x1="0" x2="1"><stop offset="0" stop-color="' + C.teal + '"/><stop offset=".5" stop-color="' + C.marino + '"/><stop offset="1" stop-color="' + C.oxido + '"/></linearGradient></defs>';
+      s += '<ellipse cx="370" cy="186" rx="350" ry="8" fill="#000" opacity=".06"/>';
+      s += '<rect x="24" y="178" width="692" height="8" rx="4" fill="url(#g-eje)"/>';
+      s += '<rect x="366" y="132" width="8" height="52" fill="' + C.oxido + '"/>';
+      s += '<g class="hoja-cal">' + o.calendario(315, 16, 110, '13', 'Julio', '2017') + '</g>';
+      /* b) antes: expedientes bajo revisión */
+      s += '<g class="lado-b">' + o.carpetas(70, 176, 4) +
+        '<g class="avanza">' + P.objJ.expediente(190, 70, .75, C.marino) + '</g></g>';
+      /* a) después: el expediente avanza hacia el trámite abreviado */
+      s += '<g class="lado-a"><g class="avanza">' + P.objJ.expediente(470, 70, .75, C.teal) + '</g>' +
+        o.planta(690, 176, .7) + '</g>';
+      return s;
+    },
+    linea: function (P) {
+      var C = P.C, o = P.obj, s = '';
+      s += o.suelo(372);
+      s += '<rect x="20" y="364" width="660" height="10" rx="5" fill="' + C.teal + '" opacity=".35"/>';
+      s += '<rect x="346" y="33" width="8" height="339" fill="' + C.oxido + '"/><g class="fecha-tag">' + o.etiqueta(350, 23, 'Vigencia plena · 13 jul. 2017', C.oxido, C.blanco, 13) + '</g>';
+      s += '<g class="puertas-antes">' + o.puerta(70, 236, 64, 128, C.celeste) + o.etiqueta(102, 222, 'Ordinario', C.marino) +
+        o.puerta(205, 236, 64, 128, C.teal) + o.etiqueta(237, 222, 'Abreviado', C.teal) + '</g>';
+      s += '<g class="puerta-despues">' + o.puerta(596, 236, 64, 128, C.teal) + o.etiqueta(628, 222, 'Abreviado', C.teal) + '</g>';
+      s += '<g class="caminante">' + P.objJ.expediente(350, 260, 1.02, C.marino) + '</g>';
+      return s;
+    }
+  };
+</script>
+<script src="../comun/escena.js?v=mision-a3-1"></script>
+<script>
+  (function () {
+    var lamina = document.getElementById('linea');
+    var imps = document.querySelectorAll('[data-imp]');
+    function limpiar() {
+      delete lamina.dataset.imp;
+      imps.forEach(function (b) { b.setAttribute('aria-pressed', 'false'); });
+      document.getElementById('r-no').hidden = true;
+      document.getElementById('r-si').hidden = true;
+    }
+    imps.forEach(function (b) {
+      b.addEventListener('click', function () {
+        lamina.dataset.imp = b.dataset.imp;
+        imps.forEach(function (o) { o.setAttribute('aria-pressed', String(o === b)); });
+        document.getElementById('r-no').hidden = b.dataset.imp !== 'no';
+        document.getElementById('r-si').hidden = b.dataset.imp !== 'si';
+      });
+    });
+    var pregunta = document.getElementById('pregunta-b');
+    OVA.raiz.addEventListener('capa', function (e) { limpiar(); pregunta.hidden = e.detail.id !== 'b-antes'; });
+    OVA.raiz.addEventListener('capa-cerrada', function () { limpiar(); pregunta.hidden = true; });
+
+    /* B1: cada regla se revela en su lado del eje y anima el expediente */
+    var eje = document.getElementById('eje');
+    [].forEach.call(eje.querySelectorAll('.regla-btn'), function (b) {
+      b.addEventListener('click', function () {
+        var abrir = b.getAttribute('aria-expanded') !== 'true';
+        b.setAttribute('aria-expanded', String(abrir));
+        document.getElementById(b.getAttribute('aria-controls')).hidden = !abrir;
+        b.closest('.regla').classList.toggle('abierta', abrir);
+        if (abrir) eje.setAttribute('data-' + b.dataset.regla, ''); else eje.removeAttribute('data-' + b.dataset.regla);
+      });
+    });
+    eje.addEventListener('click', function (e) {
+      if (!e.target.closest('.regla-cerrar')) return;
+      var btn = e.target.closest('.regla').querySelector('.regla-btn');
+      btn.click(); btn.focus({ preventScroll: true });
+    });
+    eje.addEventListener('keydown', function (e) {
+      if (e.key !== 'Escape') return;
+      var btn = eje.querySelector('.regla-btn[aria-expanded=true]');
+      if (btn) { e.preventDefault(); btn.click(); btn.focus({ preventScroll: true }); }
+    });
+  })();
+</script>
+</body>
+</html>
+
+
+
+
+

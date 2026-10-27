@@ -1,0 +1,670 @@
+<!doctype html>
+<!-- Ley 1826 de 2017 · Unidad 1 · Lección 1 · C: Razones político-criminales (revisión 3)
+     Objeto virtual para el escenario completo de la diapositiva de Genially (1151 × 480 px); el título
+     del apartado lo pone Genially. Siete escenas con mediaciones distintas y «Anterior / Siguiente» al pie.
+     Fuente: ficha de la Unidad 1, pp. 4-5 («2. Razones político-criminales»), cinco párrafos y la nota 1.
+     Todo texto marcado con data-f es textual de la ficha; verificar con herramientas/verificar_cobertura.py -->
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Razones político-criminales · Lección 1 · Ley 1826 de 2017</title>
+<link rel="stylesheet" href="../comun/assets/vendor/fontawesome.min.css">
+<link rel="stylesheet" href="../comun/assets/vendor/solid.min.css">
+<link rel="stylesheet" href="../comun/base.css?v=conexion-1">
+<style>
+  .frase.larga{font-size:16px}
+  /* C1 · tres ideas enlazadas, con el texto jurídico íntegro en sus capas */
+  .escena.c1>.texto{display:none}
+  .escena.c1{gap:0;padding:2px 3px 5px}
+  .escena.c1 .radial-zona{gap:10px;padding:2px 2px 4px}
+  .politica-entrada{display:flex;align-items:center;gap:10px;color:var(--marino);font:700 12px/1.2 Montserrat,Arial,sans-serif}
+  .politica-entrada::before,.politica-entrada::after{content:"";height:2px;flex:1;background:var(--niebla)}
+  .politica-entrada span{background:var(--teal);color:var(--blanco);border-radius:999px;padding:5px 13px;white-space:nowrap}
+  .radial-zona{flex:1;min-height:0;display:flex;flex-direction:column;position:relative;isolation:isolate;gap:12px;padding:1px 4px 2px}
+  .politica-tarjetas{flex:1;min-height:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px;align-items:stretch;position:relative}
+  .politica-tarjetas::before{content:"";position:absolute;top:45%;left:14%;right:14%;border-top:3px dashed var(--teal);opacity:.48}
+  .nodo{position:relative;display:flex;flex-direction:column;align-items:stretch;text-align:left;gap:5px;min-width:0;min-height:0;padding:10px 12px 12px;border:2px solid var(--niebla);border-radius:16px;background:var(--hielo);color:var(--marino);box-shadow:0 5px 0 var(--niebla),0 9px 17px rgba(0,63,94,.08);transition:transform .22s,box-shadow .22s,border-color .22s}
+  .nodo:nth-child(2){background:#FBE7E4;border-color:var(--coral);box-shadow:0 5px 0 var(--coral),0 9px 17px rgba(0,63,94,.08)}
+  .nodo:nth-child(3){background:#F7F8D6;border-color:var(--crema);box-shadow:0 5px 0 var(--crema),0 9px 17px rgba(0,63,94,.08)}
+  .nodo:hover,.nodo[aria-expanded=true]{transform:translateY(-4px);border-color:var(--oxido);box-shadow:0 8px 0 var(--oxido),0 14px 22px rgba(0,63,94,.14)}
+  .nodo:focus-visible{outline:3px solid var(--oxido);outline-offset:3px}
+  .nodo:not(.visto)::after{content:"";position:absolute;inset:-5px;border:2px solid var(--oxido);border-radius:19px;pointer-events:none;animation:lectura-invita 2.6s ease-out infinite}
+  .nodo-cabeza{display:flex;align-items:center;justify-content:space-between;gap:6px;font:800 11px/1.2 Montserrat,Arial,sans-serif;letter-spacing:.01em;color:var(--teal)}
+  .nodo:nth-child(2) .nodo-cabeza{color:var(--oxido)}
+  .nodo-numero{display:grid;place-items:center;flex:none;width:27px;height:27px;border-radius:50%;background:var(--marino);color:var(--blanco);font:800 13px Montserrat,Arial,sans-serif}
+  .nodo.visto .nodo-numero{background:var(--teal)}
+  .nodo svg{display:block;align-self:center;width:100%;height:clamp(120px,31vh,180px);margin:auto 0;overflow:visible}
+  .nodo-titulo{font:800 clamp(13px,1.8vw,17px)/1.2 Montserrat,Arial,sans-serif;color:var(--marino)}
+  .nodo-sub{font:400 12.5px/1.28 Roboto,Arial,sans-serif;color:var(--tinta)}
+  .nodo-accion{display:inline-flex;align-items:center;gap:6px;align-self:flex-start;margin-top:auto;padding:3px 9px;border-radius:999px;background:var(--blanco);color:var(--marino);font:800 11px Montserrat,Arial,sans-serif}
+  .politica-progreso{display:flex;align-items:center;gap:9px;color:var(--marino);font:700 12px Montserrat,Arial,sans-serif}
+  .politica-progreso progress{flex:1;height:9px;accent-color:var(--teal)}
+  .politica-progreso strong{min-width:174px;text-align:right}
+  .politica-progreso.completa strong{color:var(--teal)}
+  .radial-capa[hidden],.panel-rama[hidden]{display:none!important}
+  .radial-capa{position:absolute;inset:0;z-index:4;display:grid;place-items:center;padding:12px;background:rgba(21,46,58,.53)}
+  .radial-ventana{width:min(100%,660px);max-height:100%;display:flex;flex-direction:column;background:var(--blanco);color:var(--tinta);border:3px solid var(--teal);border-radius:17px;box-shadow:0 14px 34px rgba(13,38,48,.25);animation:revela .28s ease both;overflow:hidden}
+  .radial-ventana:focus{outline:none}
+  .radial-ventana header{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:9px 13px;background:var(--teal);color:var(--blanco);font:700 12px Montserrat,Arial,sans-serif}
+  .radial-lectura{overflow:auto;overscroll-behavior:contain;padding:19px 22px 13px;min-height:0}
+  .radial-lectura h3{font:800 19px/1.25 Montserrat,Arial,sans-serif;color:var(--marino);margin:0 0 12px}
+  .panel-rama{padding:0 0 8px;overflow:visible;font-size:17px;line-height:1.5}
+  .radial-pie{display:flex;align-items:center;justify-content:space-between;gap:10px;border-top:1px solid var(--niebla);padding:10px 16px;background:var(--hielo)}
+  .radial-pie span{font:700 12px Montserrat,Arial,sans-serif;color:var(--teal)}
+  .radial-pie button{border:2px solid var(--marino);border-radius:999px;padding:5px 13px;background:var(--marino);color:var(--blanco);font:700 12px Montserrat,Arial,sans-serif}
+  .panel-rama .marca{background:var(--crema);color:var(--marino);padding:0 .16em;border-radius:3px}
+  .radial-cerrar{border:2px solid var(--blanco);border-radius:999px;background:var(--blanco);color:var(--marino);padding:3px 12px;font:700 12px Montserrat,Arial,sans-serif;cursor:pointer;white-space:nowrap}
+  .radial-cerrar:hover,.radial-cerrar:focus-visible{outline:3px solid var(--crema);outline-offset:2px}
+  @keyframes revela{from{opacity:0;translate:0 8px}to{opacity:1;translate:0 0}}
+  @media(max-width:520px){.escena.c1 .radial-zona{min-height:calc(100dvh - 24px)}.politica-tarjetas{grid-template-columns:1fr;gap:6px}.politica-tarjetas::before{top:9%;bottom:9%;left:25px;right:auto;border-top:0;border-left:3px dashed var(--teal)}.nodo{display:grid;grid-template-columns:66px minmax(0,1fr);grid-template-rows:auto auto auto;column-gap:8px;gap:2px 8px;padding:6px 9px}.nodo-cabeza{grid-column:2}.nodo svg{grid-column:1;grid-row:1 / 5;width:66px;height:55px}.nodo-titulo{grid-column:2;font-size:12.5px}.nodo-sub{grid-column:2;font-size:11px}.nodo-accion{grid-column:2;font-size:10px}.radial-capa{padding:6px}.radial-lectura{padding:15px 15px 9px}.radial-lectura h3{font-size:17px}.panel-rama{font-size:15px}.radial-pie{padding:8px 10px}}
+  /* 2 · Tarjetas con imagen */
+  .censuras{grid-template-columns:repeat(4,minmax(0,1fr))}
+  /* 3 · Condición y garantías de la regla de oro */
+  .regla{gap:8px}
+  .c3-guia{margin-top:5px;color:var(--marino);font:800 13px/1.3 Montserrat,Arial,sans-serif}
+  .c3-guia i{margin-right:7px;color:var(--oxido)}
+  .c3-recorrido{flex:1;min-height:0;display:flex;flex-direction:column;gap:10px;padding:2px 3px 4px}
+  .c3-estado{display:flex;align-items:center;gap:9px;color:var(--marino);font:800 11.5px Montserrat,Arial,sans-serif}
+  .c3-estado progress{height:9px;flex:1;accent-color:var(--teal)}
+  .c3-estado output{min-width:106px;text-align:right}
+  .c3-mapa{flex:1;min-height:0;display:grid;grid-template-columns:minmax(0,1fr) 54px minmax(0,1fr);gap:5px;align-items:stretch}
+  .c3-tarjeta{position:relative;min-width:0;min-height:0;display:flex;flex-direction:column;align-items:center;justify-content:space-between;gap:4px;padding:9px 12px 11px;border:3px solid var(--teal);border-radius:17px;background:var(--blanco);box-shadow:0 6px 0 var(--niebla),0 12px 20px rgba(0,63,94,.08);color:var(--marino);text-align:center;cursor:pointer;transition:transform .2s,border-color .2s,box-shadow .2s}
+  .c3-tarjeta:nth-of-type(2){background:var(--hielo)}
+  .c3-tarjeta:hover,.c3-tarjeta[aria-pressed=true]{transform:translateY(-4px);border-color:var(--oxido);box-shadow:0 9px 0 var(--oxido),0 15px 24px rgba(0,63,94,.13)}
+  .c3-tarjeta:focus-visible{outline:3px solid var(--oxido);outline-offset:4px}
+  .c3-tarjeta:not(.visto)::after{content:"";position:absolute;inset:-7px;border:2px solid var(--oxido);border-radius:21px;pointer-events:none;animation:lectura-invita 2.4s ease-out infinite}
+  .c3-tarjeta:nth-of-type(2):not(.visto)::after{animation-delay:.4s}
+  .c3-insignia{align-self:flex-start;border-radius:999px;background:var(--oxido);color:var(--blanco);padding:4px 11px;font:800 11px Montserrat,Arial,sans-serif}
+  .c3-tarjeta svg{display:block;max-width:100%;width:250px;height:clamp(150px,30vh,205px);margin:auto;overflow:visible}
+  .c3-tarjeta strong{font:800 15px/1.18 Montserrat,Arial,sans-serif}
+  .c3-accion{display:inline-flex;align-items:center;gap:7px;margin-top:3px;padding:4px 11px;border-radius:999px;background:var(--crema);color:var(--marino);font:800 10.5px Montserrat,Arial,sans-serif}
+  .c3-tarjeta.visto .c3-accion{background:var(--teal);color:var(--blanco)}
+  .c3-conector{position:relative;display:grid;place-items:center;color:var(--oxido);font-size:25px;align-self:center}
+  .c3-conector::before,.c3-conector::after{content:"";position:absolute;width:35px;border-top:3px dashed var(--oxido);transform:translateY(-23px)}
+  .c3-conector::after{transform:translateY(23px)}
+  .c3-lectura[hidden]{display:none!important}
+  .c3-lectura{display:block;align-self:center;text-align:left;border:2px solid var(--teal);border-left:7px solid var(--oxido);border-radius:13px;background:var(--blanco);color:var(--tinta);padding:16px 18px;font:400 15px/1.45 Roboto,Arial,sans-serif;box-shadow:0 7px 0 var(--niebla)}
+  .c3-lectura b{display:block;margin-bottom:10px;color:var(--teal);font:800 15px/1.25 Montserrat,Arial,sans-serif}
+  .c3-lectura:focus{outline:none}
+  .regla[data-c3-activa] .c3-mapa{grid-template-columns:minmax(0,1fr) 205px;gap:15px}
+  .regla[data-c3-activa] .c3-conector{display:none}
+  .regla[data-c3-activa] .c3-tarjeta[aria-pressed=true]{grid-column:1;grid-row:1;display:grid;grid-template-columns:minmax(140px,36%) minmax(0,1fr);grid-template-rows:auto 1fr auto;align-items:center;gap:10px 16px;padding:14px 16px 17px;text-align:left;background:var(--hielo)}
+  .regla[data-c3-activa] .c3-tarjeta[aria-pressed=true] .c3-insignia{grid-column:1/-1}
+  .regla[data-c3-activa] .c3-tarjeta[aria-pressed=true] svg{grid-column:1;grid-row:2;width:100%;height:190px}
+  .regla[data-c3-activa] .c3-tarjeta[aria-pressed=true] strong{grid-column:1;grid-row:3;text-align:center}
+  .regla[data-c3-activa] .c3-tarjeta[aria-pressed=true] .c3-accion{display:none}
+  .regla[data-c3-activa] .c3-tarjeta[aria-pressed=true] .c3-lectura{grid-column:2;grid-row:2/4}
+  .regla[data-c3-activa] .c3-tarjeta[aria-pressed=false]{grid-column:2;grid-row:1;padding:10px 8px}
+  .regla[data-c3-activa] .c3-tarjeta[aria-pressed=false] svg{width:145px;height:135px}
+  .regla[data-c3-activa] .c3-tarjeta[aria-pressed=false] strong{font-size:13px}
+  @media(max-width:520px){.c3-guia{font-size:11px}.c3-recorrido{gap:7px}.c3-estado{font-size:10px}.c3-estado output{min-width:93px}.c3-mapa{grid-template-columns:minmax(0,1fr) 24px minmax(0,1fr);gap:2px;flex:none;height:400px}.c3-tarjeta{padding:7px 5px 8px;border-width:2px}.c3-insignia{font-size:9px;padding:3px 7px}.c3-tarjeta svg{width:130px;height:95px}.c3-tarjeta strong{font-size:11px}.c3-accion{padding:3px 5px;font-size:9px}.c3-conector{font-size:17px}.c3-conector::before,.c3-conector::after{display:none}.regla[data-c3-activa] .c3-mapa{display:flex;flex-direction:column;gap:7px;height:365px}.regla[data-c3-activa] .c3-tarjeta[aria-pressed=true]{order:2;flex:1;min-height:0;display:grid;grid-template-columns:105px minmax(0,1fr);grid-template-rows:auto 1fr;gap:5px 9px;padding:8px}.regla[data-c3-activa] .c3-tarjeta[aria-pressed=true] .c3-insignia{grid-column:1/-1}.regla[data-c3-activa] .c3-tarjeta[aria-pressed=true] svg{grid-column:1;grid-row:2;width:100px;height:105px}.regla[data-c3-activa] .c3-tarjeta[aria-pressed=true] strong{grid-column:1;grid-row:3;font-size:10px}.regla[data-c3-activa] .c3-tarjeta[aria-pressed=true] .c3-lectura{grid-column:2;grid-row:2/4;align-self:start;padding:9px 10px;font-size:12px;line-height:1.34}.c3-lectura b{font-size:12px;margin-bottom:5px}.regla[data-c3-activa] .c3-tarjeta[aria-pressed=false]{order:1;flex:none;height:55px;display:flex;flex-direction:row;justify-content:flex-start;gap:8px;padding:5px 8px}.regla[data-c3-activa] .c3-tarjeta[aria-pressed=false] svg{width:38px;height:38px;margin:0}.regla[data-c3-activa] .c3-tarjeta[aria-pressed=false] strong{font-size:10px}.regla[data-c3-activa] .c3-tarjeta[aria-pressed=false] .c3-accion{margin-left:auto;font-size:8px}}
+  @media(prefers-reduced-motion:reduce){.c3-tarjeta:not(.visto)::after{animation:none}}
+  /* 5 · Flujo del trámite */
+  .c5{gap:8px}
+  .c5-guia{margin-top:12px;color:var(--marino);font:800 13px/1.25 Montserrat,Arial,sans-serif}
+  .c5-guia i{margin-right:6px;color:var(--oxido)}
+  .c5-ruta{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+  .c5-paso{position:relative;display:flex;align-items:center;gap:8px;min-height:48px;padding:6px 10px;background:var(--blanco);color:var(--marino);border:2px solid var(--teal);border-radius:11px;text-align:left;font:800 12.5px/1.2 Montserrat,Arial,sans-serif;box-shadow:0 4px 0 var(--niebla);cursor:pointer}
+  .c5-paso b{display:grid;place-items:center;flex:none;width:25px;height:25px;border-radius:50%;background:var(--oxido);color:var(--blanco)}
+  .c5-paso:not(.visto)::after{content:"";position:absolute;inset:-5px;border:2px solid var(--oxido);border-radius:14px;pointer-events:none;animation:lectura-invita 2.5s ease-out infinite}
+  .c5-paso:nth-child(2):not(.visto)::after{animation-delay:.35s}
+  .c5-paso:nth-child(3):not(.visto)::after{animation-delay:.7s}
+  .c5-paso.visto{background:var(--hielo)}
+  .c5 .lamina{display:flex;flex-direction:column;gap:8px;width:100%;height:auto;min-height:0;aspect-ratio:auto;flex:1;align-self:stretch}
+  .c5-visual{position:relative;flex:1;min-height:0;overflow:hidden;border-radius:12px;background:rgba(255,255,255,.18)}
+  .c5-visual>svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible;opacity:0;visibility:hidden;pointer-events:none}
+  .c5:not([data-estado]) .c5-visual>svg[data-vista=resumen]{opacity:1;visibility:visible}
+  .c5[data-estado=c5-escrito] .c5-visual>svg[data-vista=escrito],.c5[data-estado=c5-audiencias] .c5-visual>svg[data-vista=audiencias],.c5[data-estado=c5-corte] .c5-visual>svg[data-vista=corte]{opacity:1;visibility:visible;animation:c5-barrido .52s cubic-bezier(.2,.8,.2,1) both}
+  @keyframes c5-barrido{from{opacity:0;transform:translateX(55px)}to{opacity:1;transform:translateX(0)}}
+  .c5 .lamina>.capa{position:relative;left:auto;right:auto;bottom:auto;top:auto;flex:none;max-height:39%;overflow:auto;margin:0;padding:11px 16px 9px;font-size:13.5px;line-height:1.38;gap:5px;box-shadow:0 4px 0 var(--niebla)}
+  .c5 .lamina>.capa h3{font-size:13px}
+  .c5 .lamina>.capa .cerrar{padding:2px 12px}
+  .c5 .lamina:has(>.capa:not([hidden]))::after{content:none}
+  .c5 .lamina:has(>.capa:not([hidden])) .c5-visual{min-height:190px}
+  @media(max-width:520px){.c5-guia{margin-top:5px;font-size:11.5px}.c5-ruta{grid-template-columns:1fr;gap:4px}.c5-paso{min-height:35px}.c5 .lamina{min-height:0}.c5 .c5-visual,.c5 .lamina:has(>.capa:not([hidden])) .c5-visual{height:164px;min-height:164px;flex:none}.c5 .lamina>.capa{max-height:none;font-size:12.5px;line-height:1.32;padding:8px 11px 6px;gap:3px}}
+  @media(prefers-reduced-motion:reduce){.c5-paso:not(.visto)::after{animation:none;opacity:.7}}
+  .hoja-viaja{opacity:1}
+  .escena[data-estado=c5-escrito] .hoja-viaja{animation:viaja 1.6s ease-in-out .25s both}
+  @keyframes viaja{0%{opacity:1;translate:-95px 0}100%{opacity:1;translate:100px 0}}
+  .tachado{stroke-dasharray:150;stroke-dashoffset:150;transition:stroke-dashoffset .7s}
+  .escena[data-estado=c5-escrito] .tachado{stroke-dashoffset:0}
+  .escena[data-estado=c5-audiencias] .c5-audiencias-anteriores{animation:c5-reducir 1.2s ease .35s both}
+  @keyframes c5-reducir{from{opacity:1;transform:translateX(0)}to{opacity:.24;transform:translateX(42px)}}
+  .escena[data-estado=c5-corte] .c5-equilibrio .viga{animation:c5-equilibrar .9s ease-out .35s both}
+  @keyframes c5-equilibrar{from{rotate:-10deg}to{rotate:0deg}}
+  @media(prefers-reduced-motion:reduce){.c5[data-estado] .c5-visual>svg{animation:none!important}}
+  /* 6 · Relacionar actores y papeles */
+  .c6-concepto{align-self:flex-start;max-width:100%;background:var(--hielo);border:2px solid var(--teal);border-radius:11px;color:var(--marino);box-shadow:0 3px 0 var(--niebla)}
+  .c6-concepto summary{position:relative;list-style:none;cursor:pointer;padding:7px 13px;font:800 12.5px Montserrat,Arial,sans-serif}
+  .c6-concepto summary::-webkit-details-marker{display:none}
+  .c6-concepto summary i{color:var(--oxido);margin-right:6px}
+  .c6-concepto:not([open]) summary::after{content:"";position:absolute;inset:-5px;border:2px solid var(--oxido);border-radius:14px;pointer-events:none;animation:lectura-invita 2.8s ease-out infinite}
+  .c6-concepto[open]{max-width:700px}
+  .c6-concepto p{padding:0 13px 10px;font:400 14px/1.45 Roboto,Arial,sans-serif}
+  @media(prefers-reduced-motion:reduce){.c6-concepto:not([open]) summary::after{animation:none}}
+  .actividad{flex:1;min-height:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;padding:0 8px 6px 2px}
+  .actor{display:flex;flex-direction:column;gap:8px;background:var(--blanco);border:2px solid var(--niebla);border-radius:14px;padding:10px 12px;min-height:0}
+  .actor svg{width:100%;height:120px;display:block;background:var(--hielo);border-radius:10px}
+  .actor h3{font-size:15px;color:var(--marino)}
+  .actor select{width:100%;font:500 13.5px Roboto,Arial,sans-serif;padding:7px;border:2px solid var(--marino);border-radius:8px;background:var(--blanco);color:var(--tinta)}
+  .actor .papel{font-size:14px;line-height:1.42;overflow:auto}
+  .actor .eval{font:700 12.5px Montserrat,Arial,sans-serif;display:flex;gap:6px;align-items:center}
+  .actor.ok{border-color:var(--teal)} .actor.ok .eval{color:var(--teal)}
+  .actor.no{border-color:var(--oxido)} .actor.no .eval{color:var(--oxido)}
+  .actividad.revisada .actor svg{display:none}
+  .comprobar{display:flex;gap:10px;align-items:center}
+  /* 7 · Pestañas con balanza */
+  .pestanas{display:flex;gap:6px}
+  .pestanas [role=tab]{border:2px solid var(--marino);background:var(--blanco);color:var(--marino);border-radius:999px;padding:5px 14px;font:700 13px Montserrat,Arial,sans-serif}
+  .pestanas [role=tab][aria-selected=true]{background:var(--marino);color:var(--blanco)}
+  .c7 .texto{padding-top:19px;gap:11px}
+  .c7-controles{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:12px}
+  .c7-estado{display:inline-flex;align-items:center;gap:6px;background:var(--hielo);color:var(--marino);border-radius:999px;padding:5px 11px;font:700 12px Montserrat,Arial,sans-serif;white-space:nowrap}
+  .c7-estado i{display:none}
+  .c7.exploracion-completa .c7-estado{background:var(--teal);color:var(--blanco)}
+  .c7.exploracion-completa .c7-estado i{display:inline}
+  .c7 .pestanas{width:100%}
+  .c7 .pestanas [role=tab]{flex:1;min-height:37px}
+  .c7 .panel{min-height:126px;display:flex;flex-direction:column;justify-content:center}
+  .c7 .conectar-abrir{align-self:flex-start;margin:0 0 2px}
+  @media(max-width:760px){.c7-controles{grid-template-columns:1fr;gap:6px}.c7 .panel{min-height:110px}.c7-estado{white-space:normal;justify-self:start}}
+  .escena>.lamina.c7-visual{width:100%;height:auto;aspect-ratio:auto;flex:1;min-height:0;align-self:stretch;overflow:hidden;border-radius:12px;background:rgba(255,255,255,.16)}
+  .c7-visual>svg{position:absolute;inset:0;width:100%;height:100%;overflow:hidden;opacity:0;visibility:hidden;pointer-events:none}
+  .escena[data-tab="1995"] .c7-visual>svg[data-vista="1995"],.escena[data-tab="2017"] .c7-visual>svg[data-vista="2017"],.escena[data-tab="modelo"] .c7-visual>svg[data-vista="modelo"]{opacity:1;visibility:visible;animation:c7-entra .48s ease-out both}
+  @keyframes c7-entra{from{opacity:0;transform:translateX(42px)}to{opacity:1;transform:translateX(0)}}
+  .escena[data-tab="1995"] .c7-candado{animation:c7-bloquea .6s ease-out .3s both}
+  @keyframes c7-bloquea{from{transform:translateY(-28px);opacity:.2}to{transform:translateY(0);opacity:1}}
+  .escena[data-tab="2017"] .c7-ruta{stroke-dasharray:180;animation:c7-trazo .7s ease .35s both}
+  @keyframes c7-trazo{from{stroke-dashoffset:180}to{stroke-dashoffset:0}}
+  .escena[data-tab="modelo"] .c7-converge{stroke-dasharray:260;animation:c7-trazo 1s ease .25s both}
+  @media(max-width:520px){.c7-visual{min-height:210px}}
+  @media(prefers-reduced-motion:reduce){.c7-visual>svg,.c7-candado,.c7-ruta,.c7-converge{animation:none!important}}
+  @media(max-width:760px){.actividad{grid-template-columns:1fr}.censuras{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+<main class="ova" data-ova>
+
+  <!-- 1 · Secuencia de tres ideas · p. 4, párrafo 1: propósito, límite y garantía con su oración textual -->
+  <section class="escena ancho c1" data-titulo="Una constante en la política criminal" data-progreso-propio data-lectura-integrada>
+    <div class="texto">
+      <h2 class="titulo">Una constante en la política criminal</h2>
+      <p class="frase">La búsqueda de un <span class="marca">trámite procesal expedito</span> para combatir la delincuencia de menor cuantía…</p>
+    </div>
+    <div class="radial-zona radial" id="radial">
+      <div class="politica-tarjetas" role="group" aria-label="Explore las tres ideas de política criminal">
+        <button class="nodo" data-r="r1" type="button" aria-expanded="false" aria-controls="r1" aria-label="1. Trámite procesal expedito. Abrir texto completo">
+          <span class="nodo-cabeza"><span>La búsqueda</span><span class="nodo-numero" aria-hidden="true">1</span></span>
+          <svg viewBox="0 0 240 145" data-dibujo="c1-expedito" aria-hidden="true"></svg>
+          <span class="nodo-titulo">Trámite procesal expedito</span>
+          <span class="nodo-sub">Descongestionar los despachos judiciales</span>
+          <span class="nodo-accion"><i class="fas fa-book-open" aria-hidden="true"></i> Ver más</span>
+        </button>
+        <button class="nodo" data-r="r2" type="button" aria-expanded="false" aria-controls="r2" aria-label="2. Límites constitucionales. Abrir texto completo">
+          <span class="nodo-cabeza"><span>El antecedente</span><span class="nodo-numero" aria-hidden="true">2</span></span>
+          <svg viewBox="0 0 240 145" data-dibujo="c1-limites" aria-hidden="true"></svg>
+          <span class="nodo-titulo">Límites constitucionales</span>
+          <span class="nodo-sub">Sentencia C-364 de 1996</span>
+          <span class="nodo-accion"><i class="fas fa-book-open" aria-hidden="true"></i> Ver más</span>
+        </button>
+        <button class="nodo" data-r="r3" type="button" aria-expanded="false" aria-controls="r3" aria-label="3. Garantías fundamentales. Abrir texto completo">
+          <span class="nodo-cabeza"><span>La advertencia</span><span class="nodo-numero" aria-hidden="true">3</span></span>
+          <svg viewBox="0 0 240 145" data-dibujo="c1-garantias" aria-hidden="true"></svg>
+          <span class="nodo-titulo">Garantías fundamentales</span>
+          <span class="nodo-sub">Equilibrio del proceso penal</span>
+          <span class="nodo-accion"><i class="fas fa-book-open" aria-hidden="true"></i> Ver más</span>
+        </button>
+      </div>
+      <div class="politica-progreso" id="politica-progreso" role="status" aria-live="polite"><span>Exploración</span><progress id="politica-barra" value="0" max="3"></progress><strong id="politica-cuenta">0 de 3</strong></div>
+      <div class="radial-capa" id="radial-capa" hidden>
+        <div class="radial-ventana" id="radial-ventana" role="dialog" aria-modal="true" aria-labelledby="politica-titulo" tabindex="-1">
+          <header><span><i class="fas fa-book-open" aria-hidden="true"></i> Política criminal · idea <span id="politica-idea">1</span> de 3</span><button class="radial-cerrar" id="radial-cerrar" type="button">Cerrar ✕</button></header>
+          <div class="radial-lectura"><h3 id="politica-titulo" tabindex="-1"></h3>
+            <div class="panel-rama r1" id="r1" hidden><p><span data-f>La búsqueda de un <span class="marca">trámite procesal expedito</span> para combatir la delincuencia de menor cuantía y descongestionar los despachos judiciales es una constante en la política criminal colombiana.</span></p></div>
+            <div class="panel-rama r2" id="r2" hidden><p><span data-f>Sin embargo, el antecedente de la <strong>Sentencia C-364 de 1996</strong> fijó los límites constitucionales insalvables para estas iniciativas.</span></p></div>
+            <div class="panel-rama r3" id="r3" hidden><p><span data-f>Al declarar inexequible el artículo 10 de la Ley 228 de 1995, que pretendía procesar el hurto calificado menor a diez salarios mínimos como una contravención especial, la Corte Constitucional advirtió que la <strong>celeridad procesal no puede alcanzarse despojando a la persona procesada de sus garantías fundamentales</strong> ni desfigurando el equilibrio del proceso penal.</span></p></div>
+          </div>
+          <div class="radial-pie"><span id="politica-lectura-progreso">1 de 3 ideas</span><button id="politica-siguiente" type="button">Siguiente idea →</button></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2 · Tarjetas con imagen · p. 4, párrafo 2, oraciones 1 y 2 -->
+  <section class="escena ancho" data-titulo="Lo que censuró la Corte" hidden>
+    <div class="texto">
+      <p class="tipo"><i class="fas fa-magnifying-glass" aria-hidden="true"></i>Caso de estudio</p>
+      <h2 class="titulo">Lo que censuró la Corte</h2>
+      <p class="frase" hidden><span data-f>El tribunal censuró con vehemencia que dicha ley</span>…</p>
+    </div>
+    <div class="rejilla censuras">
+      <button class="giro" type="button"><span class="cara frente"><svg viewBox="0 0 240 150" data-dibujo="t-penas"></svg><span class="pie">Penas severas<i class="fas fa-arrow-right" aria-hidden="true"></i></span></span>
+        <span class="cara reverso"><span class="h3">1 · Penas severas</span><span>…<span data-f>mantuviera <strong>penas severas de prisión (de hasta ocho años)</strong></span>…</span></span></button>
+      <button class="giro" type="button"><span class="cara frente"><svg viewBox="0 0 240 150" data-dibujo="t-funciones"></svg><span class="pie">Funciones acumuladas<i class="fas fa-arrow-right" aria-hidden="true"></i></span></span>
+        <span class="cara reverso"><span class="h3">2 · Funciones acumuladas</span><span>…<span data-f>mientras <strong>suprimía la separación de funciones entre acusación y juzgamiento</strong> al acumularlas en el juez o la jueza municipal.</span></span></span></button>
+      <button class="giro" type="button"><span class="cara frente"><svg viewBox="0 0 240 150" data-dibujo="t-pruebas"></svg><span class="pie">Pruebas limitadas<i class="fas fa-arrow-right" aria-hidden="true"></i></span></span>
+        <span class="cara reverso"><span class="h3">3 · Pruebas limitadas</span><span><span data-f>Además, <strong>limitaba las oportunidades probatorias</strong></span>…</span></span></button>
+      <button class="giro" type="button"><span class="cara frente"><svg viewBox="0 0 240 150" data-dibujo="t-beneficios"></svg><span class="pie">Sin beneficios<i class="fas fa-arrow-right" aria-hidden="true"></i></span></span>
+        <span class="cara reverso"><span class="h3">4 · Sin beneficios</span><span>…<span data-f>y <strong>eliminaba el acceso a beneficios sustanciales</strong> como la condena de ejecución condicional y la libertad provisional.</span></span></span></button>
+    </div>
+  </section>
+
+  <!-- 3 · Condición y garantías de la regla · p. 4, párrafo 2, oración 3 -->
+  <section class="escena regla" data-titulo="La regla de oro" hidden>
+    <div class="texto">
+      <p class="tipo"><i class="fas fa-lightbulb" aria-hidden="true"></i>Nota clave</p>
+      <h2 class="titulo">La regla de oro</h2>
+      <p class="c3-guia"><i class="fas fa-hand-pointer" aria-hidden="true"></i>Toca las dos tarjetas: descubre la condición y luego las garantías.</p>
+    </div>
+    <div class="c3-recorrido">
+      <div class="c3-estado"><span>Regla de oro</span><progress id="c3-avance" max="2" value="0" aria-label="Partes exploradas"></progress><output id="c3-cuenta" aria-live="polite">0 de 2</output></div>
+      <div class="c3-mapa" role="group" aria-label="Dos partes de la regla de oro">
+        <button class="c3-tarjeta" type="button" data-c3="condicion" aria-pressed="false">
+          <span class="c3-insignia">1 · Condición</span>
+          <svg viewBox="0 0 260 190" aria-hidden="true"><ellipse cx="130" cy="177" rx="83" ry="9" fill="#D7E4E6"/><path d="M72 15 H172 L195 38 V158 Q195 166 187 166 H72 Q64 166 64 158 V23 Q64 15 72 15 Z" fill="#fff" stroke="#30615B" stroke-width="5"/><path d="M172 15 V38 H195" fill="#D7E4E6" stroke="#30615B" stroke-width="4"/><path d="M84 58 H169 M84 76 H169 M84 94 H145" stroke="#A9C0CA" stroke-width="6" stroke-linecap="round"/><circle cx="157" cy="125" r="25" fill="#AD4D32"/><path d="M157 111 V130 M157 139 V141" stroke="#fff" stroke-width="6" stroke-linecap="round"/></svg>
+          <strong>Represión penal severa</strong><span class="c3-accion"><i class="fas fa-hand-pointer" aria-hidden="true"></i> Toca para descubrir</span>
+          <span class="c3-lectura" data-c3-panel="condicion" hidden><b>La condición</b>si el legislador o legisladora considera que una conducta amerita una represión penal severa,</span>
+        </button>
+        <span class="c3-conector" aria-hidden="true"><i class="fas fa-arrow-right"></i></span>
+        <button class="c3-tarjeta" type="button" data-c3="garantias" aria-pressed="false">
+          <span class="c3-insignia">2 · Garantías</span>
+          <svg viewBox="0 0 260 190" aria-hidden="true"><ellipse cx="130" cy="178" rx="88" ry="9" fill="#D7E4E6"/><path d="M130 39 V162 M104 164 H156 M40 55 L220 55" fill="none" stroke="#30615B" stroke-width="9" stroke-linecap="round"/><circle cx="130" cy="49" r="12" fill="#F2F3B8" stroke="#30615B" stroke-width="5"/><path d="M52 57 L33 116 M52 57 L72 116 M207 57 L187 116 M207 57 L227 116" fill="none" stroke="#353A3C" stroke-width="2"/><path d="M25 116 Q52 143 80 116 Z M179 116 Q207 143 235 116 Z" fill="#AD4D32"/><path d="M116 139 L126 149 L146 126" fill="none" stroke="#30615B" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <strong>Imparcialidad y juicio oral</strong><span class="c3-accion"><i class="fas fa-hand-pointer" aria-hidden="true"></i> Toca para descubrir</span>
+          <span class="c3-lectura" data-c3-panel="garantias" hidden><b>La regla completa</b><span data-f>La Corte estableció así una regla de oro:</span> <span data-f>si el legislador o legisladora considera que una conducta amerita una represión penal severa, está constitucionalmente obligado(a) a preservar <strong>la imparcialidad judicial y la plenitud de las formas del juicio oral y acusatorio</strong>.</span></span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4 · Comparador con globos por época · p. 4, párrafo 3, oraciones 1 y 2 -->
+  <section class="escena" data-titulo="Dos décadas después" hidden>
+    <div class="texto">
+      <p class="tipo"><i class="fas fa-book-open" aria-hidden="true"></i>Lectura principal</p>
+      <h2 class="titulo">Dos décadas después</h2>
+      <p class="frase larga" hidden><span data-f>Dos décadas después, la Ley 1826 de 2017, que introdujo el procedimiento penal especial abreviado, redefinió este panorama político-criminal al aprender de los errores de diseño constitucional expuestos en 1996.</span></p>
+      <p class="instruccion"><i class="fas fa-circle-info" aria-hidden="true"></i>Arrastre la división: en cada época aparece lo que cambió.</p>
+    </div>
+    <div class="lamina comparador">
+      <span class="rotulo a">1995</span><span class="rotulo b">2017</span>
+      <div class="vista ahora"><svg viewBox="0 0 700 428" data-dibujo="d2017"></svg></div>
+      <div class="vista antes"><svg viewBox="0 0 700 428" data-dibujo="d1995"></svg></div>
+      <span class="divisor" aria-hidden="true"></span>
+      <p class="globo a" data-lado="antes" style="left:2%;top:9%"><span data-f>A diferencia de la <strong>Ley 228 de 1995</strong>, que sacrificaba garantías para ganar rapidez,</span>…</p>
+      <p class="globo" data-lado="ahora" style="right:2%;top:9%">…<span data-f>la <strong>Ley 1826 de 2017</strong> racionaliza el proceso penal sin fusionar las funciones judiciales ni menoscabar los derechos de la persona procesada.</span></p>
+      <div class="control">
+        <button class="btn sec" type="button" data-ir-lado="antes">1995</button>
+        <input type="range" min="0" max="100" value="82" aria-label="Posición de la división entre la Ley 228 de 1995 y la Ley 1826 de 2017" data-antes="Ley 228 de 1995" data-ahora="Ley 1826 de 2017">
+        <button class="btn" type="button" data-ir-lado="ahora">2017</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5 · Flujo del trámite por pasos · p. 5, párrafo 3 (continuación) -->
+  <section class="escena c5" data-titulo="Simplifica los ritos procesales" hidden>
+    <div class="texto">
+      <p class="tipo"><i class="fas fa-book-open" aria-hidden="true"></i>Lectura principal</p>
+      <h2 class="titulo">Simplifica los ritos procesales</h2>
+      <p class="frase" hidden><span data-f>El procedimiento abreviado mantiene intactas las competencias de <span class="marca">jueces de conocimiento y jueces de control de garantías</span>,</span>…</p>
+      <p class="c5-guia"><i class="fas fa-arrow-right" aria-hidden="true"></i>Sigue los tres cambios del trámite</p>
+      <div class="c5-ruta" role="group" aria-label="Cambios del trámite abreviado">
+        <button class="c5-paso" type="button" data-capa="c5-escrito"><b aria-hidden="true">1</b>Traslado por escrito</button>
+        <button class="c5-paso" type="button" data-capa="c5-audiencias"><b aria-hidden="true">2</b>Menos audiencias previas</button>
+        <button class="c5-paso" type="button" data-capa="c5-corte"><b aria-hidden="true">3</b>Límite de garantías</button>
+      </div>
+    </div>
+    <div class="lamina">
+      <div class="c5-visual" aria-live="polite">
+        <svg viewBox="0 0 700 340" data-dibujo="ritos-resumen" data-vista="resumen" role="img" aria-label="Panorama de los tres cambios: traslado escrito, menos audiencias y garantías"></svg>
+        <svg viewBox="0 0 700 340" data-dibujo="ritos-escrito" data-vista="escrito" role="img" aria-label="La acusación pasa por escrito de la Fiscalía a la defensa"></svg>
+        <svg viewBox="0 0 700 340" data-dibujo="ritos-audiencias" data-vista="audiencias" role="img" aria-label="Se reducen las audiencias previas"></svg>
+        <svg viewBox="0 0 700 340" data-dibujo="ritos-corte" data-vista="corte" role="img" aria-label="Permanecen las garantías del proceso penal"></svg>
+      </div>
+      <div class="capa" id="c5-escrito" aria-labelledby="c5-escrito-t">
+        <h3 id="c5-escrito-t">1 · Traslado directo y por escrito</h3>
+        <p>…<span data-f>pero simplifica los ritos procesales al <strong>eliminar la audiencia oral de formulación de imputación</strong> y sustituirla por el <strong>traslado directo y por escrito de la acusación a la defensa</strong>.</span></p>
+      </div>
+      <div class="capa" id="c5-audiencias" aria-labelledby="c5-audiencias-t">
+        <h3 id="c5-audiencias-t">2 · Menos audiencias previas</h3>
+        <p><span data-f>Esto <strong>reduce de forma drástica el número de audiencias previas</strong> y protege el núcleo del derecho de defensa y la contradicción,</span>…</p>
+      </div>
+      <div class="capa" id="c5-corte" aria-labelledby="c5-corte-t">
+        <h3 id="c5-corte-t">3 · En consonancia con la Corte</h3>
+        <p>…<span data-f>en consonancia con la advertencia de la Corte de que los trámites <strong>no deben demorarse de forma injustificada, pero tampoco acelerarse</strong> al anular la estructura procesal de garantías.</span></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6 · Relacionar actores y papeles · p. 5, párrafo 4 -->
+  <section class="escena ancho" data-titulo="El acusador privado" hidden>
+    <div class="texto">
+      <p class="tipo"><i class="fas fa-screwdriver-wrench" aria-hidden="true"></i>Ejercicio práctico</p>
+      <h2 class="titulo">El acusador privado</h2>
+      <details class="c6-concepto"><summary><i class="fas fa-circle-info" aria-hidden="true"></i>¿Qué es el segundo pilar?</summary><p><span data-f>El segundo pilar político-criminal de la Ley 1826 de 2017 es la incorporación de la figura del <strong>acusador privado</strong>.</span></p></details>
+      <div class="comprobar">
+        <p class="instruccion"><i class="fas fa-circle-info" aria-hidden="true"></i>Relacione cada actor con su papel y compruebe.</p>
+        <button class="btn" type="button" id="comprobar">Comprobar</button>
+      </div>
+    </div>
+    <div class="actividad" id="actividad">
+      <article class="actor" data-correcta="persigue">
+        <svg viewBox="0 0 240 120" data-dibujo="a-victima"></svg>
+        <h3>La víctima y su representante</h3>
+        <select aria-label="Papel de la víctima y su representante"><option value="">Elija su papel…</option><option value="decide">Tercero imparcial que decide</option><option value="persigue">Lidera de manera directa la persecución</option><option value="titular">Conserva la titularidad preferente y constitucional de la acción penal</option></select>
+        <p class="eval" hidden></p>
+        <p class="papel" hidden><span data-f>Este es un mecanismo que permite la <strong>conversión de la acción penal pública a privada</strong> para que la víctima, representada por su abogado o abogada de confianza o por un consultorio jurídico, lidere de manera directa la persecución de conductas punibles menores (como el hurto simple, la estafa o las lesiones personales culposas).</span></p>
+      </article>
+      <article class="actor" data-correcta="decide">
+        <svg viewBox="0 0 240 120" data-dibujo="a-juez"></svg>
+        <h3>Quien juzga</h3>
+        <select aria-label="Papel de quien juzga"><option value="">Elija su papel…</option><option value="titular">Conserva la titularidad preferente y constitucional de la acción penal</option><option value="decide">Tercero imparcial que decide</option><option value="persigue">Lidera de manera directa la persecución</option></select>
+        <p class="eval" hidden></p>
+        <p class="papel" hidden><span data-f>A diferencia del esquema desvirtuado en la Sentencia C-364 de 1996, el acusador privado preserva la <strong>estricta escisión entre la parte acusadora y el tercero imparcial que decide</strong>.</span></p>
+      </article>
+      <article class="actor" data-correcta="titular">
+        <svg viewBox="0 0 240 120" data-dibujo="a-fgn"></svg>
+        <h3>La Fiscalía General de la Nación</h3>
+        <select aria-label="Papel de la Fiscalía General de la Nación"><option value="">Elija su papel…</option><option value="persigue">Lidera de manera directa la persecución</option><option value="decide">Tercero imparcial que decide</option><option value="titular">Conserva la titularidad preferente y constitucional de la acción penal</option></select>
+        <p class="eval" hidden></p>
+        <p class="papel" hidden><span data-f>La FGN <strong>conserva la titularidad preferente y constitucional de la acción penal</strong>, pero delega el rol de acusación activa en el particular, lo que impide la concentración de poderes inquisitivos en quien ejerce como juzgador.</span></p>
+      </article>
+    </div>
+  </section>
+
+  <!-- 7 · Pestañas con balanza · p. 5, párrafo 5 y nota 1 -->
+  <section class="escena c7" data-titulo="Proporcionalidad" data-tab="1995" hidden>
+    <div class="texto">
+      <p class="tipo"><i class="fas fa-book-open" aria-hidden="true"></i>Lectura principal</p>
+      <h2 class="titulo">Proporcionalidad</h2>
+      <p class="frase larga" hidden><span data-f>Finalmente, la Ley 1826 de 2017 se ajusta a la <span class="marca">proporcionalidad</span> exigida por la doctrina constitucional al no consagrar un régimen punitivo o de beneficios regresivos en comparación con el procedimiento penal ordinario.</span></p>
+      <div class="c7-controles">
+        <div class="pestanas" role="tablist" aria-label="Proporcionalidad">
+          <button role="tab" type="button" id="t1995" aria-controls="p1995" aria-selected="true">1995</button>
+          <button role="tab" type="button" id="t2017" aria-controls="p2017" aria-selected="false" tabindex="-1">2017</button>
+          <button role="tab" type="button" id="tmodelo" aria-controls="pmodelo" aria-selected="false" tabindex="-1">De este modo</button>
+        </div>
+        <p class="c7-estado" role="status" aria-live="polite"><i class="fas fa-circle-check" aria-hidden="true"></i><span>1 de 3 vistas</span></p>
+      </div>
+      <div class="panel" role="tabpanel" id="p1995" aria-labelledby="t1995"><p><span data-f>Mientras que la legislación de 1995 <strong>cercenaba el acceso a subrogados penales y libertades provisionales</strong> para los ritos rápidos,</span>…</p></div>
+      <div class="panel" role="tabpanel" id="p2017" aria-labelledby="t2017" hidden><p>…<span data-f>el procedimiento abreviado de 2017 <strong>equilibra la agilidad procedimental<sup>1</sup> con incentivos procesales y beneficios sustanciales amplios</strong> por la aceptación temprana de cargos.</span></p>
+        <p class="nota-pie"><span data-f><sup>1</sup> Proyecto de Ley 048, 2015.</span></p></div>
+      <div class="panel" role="tabpanel" id="pmodelo" aria-labelledby="tmodelo" hidden><p><span data-f>De este modo, la reforma plantea un modelo en el que la celeridad judicial y la oralidad no se construyen como herramientas de excepción o castigo procedimental, sino como una <strong>fórmula legítima de descongestión judicial</strong> que respeta los límites del arbitrio penal delineados por la jurisprudencia constitucional colombiana.</span></p></div>
+    </div>
+    <div class="lamina c7-visual">
+      <svg viewBox="0 0 700 320" data-dibujo="c7-1995" data-vista="1995" role="img" aria-label="En 1995 se restringía el acceso a subrogados penales y libertades provisionales"></svg>
+      <svg viewBox="0 0 700 320" data-dibujo="c7-2017" data-vista="2017" role="img" aria-label="En 2017 la agilidad se relaciona con la aceptación temprana de cargos, incentivos y beneficios"></svg>
+      <svg viewBox="0 0 700 320" data-dibujo="c7-modelo" data-vista="modelo" role="img" aria-label="La celeridad y la oralidad contribuyen a la descongestión dentro de límites constitucionales"></svg>
+    </div>
+  </section>
+
+</main>
+<script src="../comun/personajes.js"></script>
+<script src="../comun/objetos-juridicos.js"></script>
+<script>
+  window.DIBUJOS = {
+    /* C1 · tres ilustraciones ligeras para la secuencia de ideas */
+    'c1-expedito': function (P) {
+      var C = P.C, o = P.obj;
+      return '<ellipse cx="120" cy="134" rx="101" ry="6" fill="#003F5E" opacity=".10"/>' +
+        o.carpetas(40, 126, 5) + o.carpetas(171, 126, 4) +
+        o.reloj(120, 67, 24);
+    },
+    'c1-limites': function (P) {
+      return '<ellipse cx="120" cy="134" rx="90" ry="6" fill="#003F5E" opacity=".10"/>' + P.obj.corte(62, 20, 116);
+    },
+    'c1-garantias': function (P) {
+      return '<ellipse cx="120" cy="134" rx="83" ry="6" fill="#003F5E" opacity=".10"/>' + P.obj.balanza(120, 20, .72);
+    },
+    /* Tarjetas de las censuras */
+    't-penas': function (P) { var C = P.C, o = P.obj; return o.rejas(70, 18, 100, 112) + o.etiqueta(120, 140, 'Hasta 8 años', C.oxido, '#fff', 10); },
+    't-funciones': function (P) {
+      var C = P.C, o = P.obj;
+      return P.objJ.mazo(82, 48, .57) + o.estrado(80, 110, 80, 40, C.teal) +
+        o.etiqueta(56, 26, 'Acusación', C.oxido, '#fff', 10) + o.etiqueta(186, 26, 'Juzgamiento', C.marino, '#fff', 10);
+    },
+    't-pruebas': function (P) { var o = P.obj; return o.caja(76, 54, 88, true) + o.lupa(178, 44, 18); },
+    't-beneficios': function (P) {
+      var C = P.C, o = P.obj;
+      return o.puerta(92, 22, 56, 120, C.teal) + '<g transform="translate(120 92)"><path d="M-8 0 V-8 A8 8 0 0 1 8 -8 V0" fill="none" stroke="' + C.gris + '" stroke-width="4"/><rect x="-12" y="-1" width="24" height="19" rx="3" fill="' + C.crema + '"/></g>';
+    },
+    regla: function (P) {
+      var C = P.C, o = P.obj, s = '';
+      s += o.suelo(372);
+      s += o.balanza(430, 160, 1.05);
+      s += o.etiqueta(330, 252, 'Imparcialidad', C.marino, C.blanco, 12) + o.etiqueta(530, 252, 'Formas del juicio', C.marino, C.blanco, 12);
+      s += P.objJ.documento(92, 225, 1.12, C.oxido);
+      return s;
+    },
+    /* Comparador: símbolos de funciones procesales debajo de los globos */
+    d1995: function (P) {
+      var C = P.C, o = P.obj, s = '';
+      s += '<rect width="700" height="428" fill="#F4EFD6"/>' + o.suelo(372);
+      s += o.estrado(250, 300, 200, 72, C.oxido) + P.objJ.mazo(300, 195, .9) + o.etiqueta(350, 344, 'Acusación + juzgamiento', C.blanco, C.oxido, 12);
+      s += P.objJ.expediente(70, 256, .95, C.oxido);
+      return s;
+    },
+    d2017: function (P) {
+      var C = P.C, o = P.obj, s = '';
+      s += '<rect width="700" height="428" fill="#FBFAE6"/>' + o.suelo(372);
+      s += o.estrado(270, 300, 160, 72, C.teal) + P.objJ.mazo(305, 195, .9) + o.etiqueta(350, 344, 'Juzgamiento', C.blanco, C.marino, 12);
+      s += P.objJ.expediente(70, 255, .85, C.oxido) + o.etiqueta(120, 414, 'Acusación', C.oxido, '#fff', 12);
+      s += P.objJ.documento(545, 255, .85, C.teal) + o.etiqueta(590, 414, 'Defensa', C.teal, '#fff', 12);
+      return s;
+    },
+    /* Vista general inicial y tres vistas excluyentes al escoger un paso. */
+    'ritos-resumen': function (P) {
+      var C = P.C, o = P.obj, s = o.suelo(294);
+      s += o.calendario(38, 58, 78, '✕', 'AUD.', 'imputación');
+      s += '<g class="audiencias-previas">' + [0, 1, 2, 3].map(function (i) {
+        return '<g>' + o.calendario(152 + i * 58, 80, 45, '', 'AUD.', '') + '</g>';
+      }).join('') + '</g>';
+      s += o.corte(471, 87, 150) + o.etiqueta(556, 216, 'Garantías', C.marino, C.blanco, 11);
+      s += P.objJ.expediente(166, 210, .65, C.marino) + P.objJ.bandeja(352, 229, .62, C.teal);
+      s += '<g class="hoja-viaja">' + o.hoja(278, 195, .9, -5) + '</g>';
+      return s;
+    },
+    'ritos-escrito': function (P) {
+      var C = P.C, o = P.obj, s = '';
+      s += o.suelo(294);
+      s += o.calendario(72, 87, 82, '✕', 'AUD.', 'imputación');
+      s += '<path class="tachado" d="M70 86 L169 185" stroke="' + C.oxido + '" stroke-width="7" stroke-linecap="round"/>';
+      s += P.objJ.expediente(186, 158, 1.08, C.marino) + o.etiqueta(225, 323, 'Fiscalía', C.marino, C.blanco, 12);
+      s += '<path d="M302 185 H450" fill="none" stroke="' + C.oxido + '" stroke-width="7" stroke-linecap="round" marker-end="none"/>';
+      s += '<g class="hoja-viaja">' + o.hoja(341, 141, 1.35, -5) + '</g>';
+      s += P.objJ.bandeja(489, 194, 1.04, C.teal) + o.etiqueta(537, 323, 'Defensa', C.teal, C.blanco, 12);
+      return s;
+    },
+    'ritos-audiencias': function (P) {
+      var C = P.C, o = P.obj, s = o.suelo(294);
+      s += '<g class="c5-audiencias-anteriores">' + [0, 1, 2].map(function (i) {
+        return o.calendario(78 + i * 67, 96 + i * 13, 76, '', 'AUD.', '');
+      }).join('') + '</g>';
+      s += o.etiqueta(181, 266, 'Audiencias previas', C.marino, C.blanco, 12);
+      s += '<path d="M315 150 H434 M419 136 L439 150 L419 164" fill="none" stroke="' + C.oxido + '" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>';
+      s += o.calendario(500, 88, 104, '✓', 'AUD.', '');
+      s += o.etiqueta(553, 266, 'Menos audiencias', C.teal, C.blanco, 12);
+      return s;
+    },
+    'ritos-corte': function (P) {
+      var C = P.C, o = P.obj, s = o.suelo(294);
+      s += '<g class="c5-equilibrio">' + o.balanza(350, 98, 1.05) + '</g>';
+      s += o.reloj(248, 117, 31) + o.corte(423, 91, 66);
+      s += o.etiqueta(238, 273, 'Agilidad', C.oxido, C.blanco, 12);
+      s += o.etiqueta(462, 273, 'Garantías', C.teal, C.blanco, 12);
+      return s;
+    },
+    /* Actores de la actividad */
+    'a-victima': function (P) {
+      var C = P.C;
+      return P.objJ.documento(35, 28, .76, C.oxido) + P.objJ.expediente(126, 30, .75, C.teal);
+    },
+    'a-juez': function (P) { var C = P.C, o = P.obj; return o.corte(75, 17, 90) + P.objJ.mazo(157, 58, .45); },
+    'a-fgn': function (P) {
+      var C = P.C;
+      return P.objJ.expediente(69, 30, .8, C.teal) + P.obj.etiqueta(186, 30, 'FGN', C.teal, '#fff', 11);
+    },
+    'c7-1995': function (P) {
+      var C = P.C, o = P.obj, s = o.suelo(274);
+      function acceso(x, rotulo) {
+        return '<rect x="' + x + '" y="42" width="204" height="192" rx="14" fill="' + C.blanco + '" stroke="' + C.oxido + '" stroke-width="4"/>' +
+          '<path class="c7-candado" d="M' + (x + 78) + ' 119 V95 A25 25 0 0 1 ' + (x + 128) + ' 95 V119" fill="none" stroke="' + C.marino + '" stroke-width="9" stroke-linecap="round"/>' +
+          '<g class="c7-candado"><rect x="' + (x + 65) + '" y="118" width="76" height="59" rx="9" fill="' + C.oxido + '"/><circle cx="' + (x + 103) + '" cy="143" r="6" fill="' + C.crema + '"/></g>' +
+          o.etiqueta(x + 102, 260, rotulo, C.marino, C.blanco, 12);
+      }
+      s += acceso(78, 'Subrogados penales') + acceso(418, 'Libertades provisionales');
+      return s;
+    },
+    'c7-2017': function (P) {
+      var C = P.C, o = P.obj, s = o.suelo(274);
+      s += o.reloj(124, 126, 48) + o.etiqueta(124, 247, 'Agilidad', C.marino, C.blanco, 12);
+      s += '<path class="c7-ruta" d="M186 128 H251 M237 115 L253 128 L237 141 M431 128 H493 M479 115 L495 128 L479 141" fill="none" stroke="' + C.oxido + '" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>';
+      s += P.objJ.documento(304, 73, 1.07, C.teal) + o.etiqueta(350, 247, 'Aceptación temprana', C.teal, C.blanco, 12);
+      s += '<rect x="531" y="74" width="92" height="132" rx="10" fill="' + C.niebla + '" stroke="' + C.teal + '" stroke-width="6"/>' +
+        '<path d="M535 75 L585 63 V191 L535 202 Z" fill="' + C.blanco + '" stroke="' + C.teal + '" stroke-width="5"/>' +
+        '<circle cx="571" cy="138" r="5" fill="' + C.oxido + '"/>' + o.etiqueta(576, 247, 'Incentivos y beneficios', C.marino, C.blanco, 12);
+      return s;
+    },
+    'c7-modelo': function (P) {
+      var C = P.C, o = P.obj, s = o.suelo(274);
+      s += o.reloj(134, 101, 42) + o.etiqueta(134, 184, 'Celeridad', C.marino, C.blanco, 12);
+      s += '<path d="M513 68 H588 Q603 68 603 84 V132 Q603 148 587 148 H559 L539 165 V148 H513 Q497 148 497 132 V84 Q497 68 513 68 Z" fill="' + C.niebla + '" stroke="' + C.teal + '" stroke-width="5"/>' +
+        '<path d="M521 95 H577 M521 110 H563 M521 125 H550" stroke="' + C.marino + '" stroke-width="5" stroke-linecap="round"/>' + o.etiqueta(552, 184, 'Oralidad', C.teal, C.blanco, 12);
+      s += '<path class="c7-converge" d="M189 121 L281 190 M267 171 L282 191 L260 188 M495 121 L414 190 M435 176 L413 192 L419 169" fill="none" stroke="' + C.oxido + '" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>';
+      s += o.corte(295, 170, 111) + o.etiqueta(350, 279, 'Descongestión judicial', C.marino, C.blanco, 12);
+      s += '<circle cx="350" cy="224" r="18" fill="' + C.teal + '" stroke="' + C.blanco + '" stroke-width="3"/><path d="M341 223 L348 230 L360 217" fill="none" stroke="' + C.blanco + '" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>';
+      return s;
+    }
+  };
+</script>
+<script src="../comun/escena.js?v=orden-c3-c5-c7-1"></script>
+<script>
+  /* 1 · Una idea abierta a la vez; la tarjeta explorada queda marcada */
+  (function () {
+    var radial = document.getElementById('radial');
+    var nodos = radial.querySelectorAll('.nodo');
+    var capa = document.getElementById('radial-capa');
+    var ventana = document.getElementById('radial-ventana');
+    var cerrar = document.getElementById('radial-cerrar');
+    var siguiente = document.getElementById('politica-siguiente');
+    var titulo = document.getElementById('politica-titulo');
+    var cuenta = document.getElementById('politica-cuenta');
+    var barra = document.getElementById('politica-barra');
+    var progreso = document.getElementById('politica-progreso');
+    var origen = null;
+    function ocultar() {
+      capa.hidden = true;
+      nodos.forEach(function (n) { n.setAttribute('aria-expanded', 'false'); });
+      radial.querySelectorAll('.panel-rama').forEach(function (p) { p.hidden = true; });
+      delete radial.dataset.abierta;
+      if (origen) origen.focus({ preventScroll: true });
+      origen = null;
+    }
+    function alternar(n) {
+      origen = n;
+      nodos.forEach(function (o) {
+        var es = o === n;
+        o.setAttribute('aria-expanded', String(es));
+        document.getElementById(o.dataset.r).hidden = !es;
+      });
+      radial.dataset.abierta = n.dataset.r;
+      n.classList.add('visto');
+      var vistas = radial.querySelectorAll('.nodo.visto').length;
+      barra.value = vistas;
+      cuenta.textContent = vistas === 3 ? '100 % · Exploración completa' : vistas + ' de 3';
+      progreso.classList.toggle('completa', vistas === 3);
+      var indice = Number(n.dataset.r.slice(1));
+      document.getElementById('politica-idea').textContent = indice;
+      document.getElementById('politica-lectura-progreso').textContent = indice + ' de 3 ideas';
+      titulo.textContent = n.querySelector('.nodo-titulo').textContent;
+      siguiente.textContent = indice === 3 ? 'Volver a las tarjetas' : 'Siguiente idea →';
+      n.querySelector('.nodo-numero').innerHTML = '<i class="fas fa-circle-check" aria-hidden="true"></i>';
+      n.querySelector('.nodo-accion').innerHTML = '<i class="fas fa-circle-check" aria-hidden="true"></i> Visto';
+      ventana.setAttribute('aria-describedby', n.dataset.r);
+      capa.hidden = false;
+      titulo.focus({ preventScroll: true });
+    }
+    nodos.forEach(function (n) {
+      n.addEventListener('click', function () { alternar(n); });
+    });
+    cerrar.addEventListener('click', ocultar);
+    siguiente.addEventListener('click', function () {
+      var indice = Number(radial.dataset.abierta.slice(1));
+      if (indice === 3) ocultar();
+      else alternar(nodos[indice]);
+    });
+    capa.addEventListener('click', function (e) { if (e.target === capa) ocultar(); });
+    document.addEventListener('keydown', function (e) {
+      if (capa.hidden) return;
+      if (e.key === 'Escape') { e.preventDefault(); ocultar(); }
+      if (e.key === 'Tab') {
+        var focos = [cerrar, siguiente];
+        var indice = focos.indexOf(document.activeElement);
+        e.preventDefault();
+        focos[e.shiftKey ? (indice <= 0 ? 1 : 0) : (indice === 0 ? 1 : 0)].focus({ preventScroll: true });
+      }
+    });
+  })();
+  /* 3 · La lectura se integra en la tarjeta elegida, sin cubrir su ilustración. */
+  (function () {
+    var escena = document.querySelector('.escena.regla');
+    var tarjetas = [].slice.call(escena.querySelectorAll('[data-c3]'));
+    var paneles = [].slice.call(escena.querySelectorAll('[data-c3-panel]'));
+    var vistos = new Set();
+    var barra = escena.querySelector('#c3-avance');
+    var cuenta = escena.querySelector('#c3-cuenta');
+    tarjetas.forEach(function (tarjeta) {
+      tarjeta.addEventListener('click', function () {
+        var clave = tarjeta.dataset.c3;
+        vistos.add(clave);
+        escena.dataset.c3Activa = clave;
+        tarjetas.forEach(function (t) {
+          t.setAttribute('aria-pressed', String(t === tarjeta));
+          if (vistos.has(t.dataset.c3)) {
+            t.classList.add('visto');
+            t.querySelector('.c3-accion').textContent = '✓ Revisado · Toca para repasar';
+          }
+        });
+        paneles.forEach(function (p) { p.hidden = p.dataset.c3Panel !== clave; });
+        barra.value = vistos.size;
+        cuenta.textContent = vistos.size === 2 ? '2 de 2 · Completado' : vistos.size + ' de 2';
+        tarjeta.focus({ preventScroll: true });
+      });
+    });
+  })();
+  /* 6 · Relacionar */
+  document.getElementById('comprobar').addEventListener('click', function () {
+    document.querySelectorAll('#actividad .actor').forEach(function (a) {
+      var v = a.querySelector('select').value, ok = v === a.dataset.correcta, e = a.querySelector('.eval');
+      a.classList.toggle('ok', ok); a.classList.toggle('no', !ok);
+      e.hidden = false;
+      e.innerHTML = ok ? '<i class="fas fa-circle-check" aria-hidden="true"></i>Correcto' :
+        '<i class="fas fa-triangle-exclamation" aria-hidden="true"></i>' + (v ? 'No corresponde. Su papel es este:' : 'Sin respuesta. Su papel es este:');
+      a.querySelector('.papel').hidden = false;
+    });
+    document.getElementById('actividad').classList.add('revisada');
+  });
+  /* 7 · Pestañas */
+  var tabs = [].slice.call(document.querySelectorAll('.pestanas [role=tab]'));
+  function tab(t) {
+    tabs.forEach(function (o) {
+      var on = o === t;
+      o.setAttribute('aria-selected', String(on)); o.tabIndex = on ? 0 : -1;
+      document.getElementById(o.getAttribute('aria-controls')).hidden = !on;
+    });
+    t.closest('.escena').dataset.tab = t.id.slice(1);
+  }
+  tabs.forEach(function (t, i) {
+    t.addEventListener('click', function () { tab(t); });
+    t.addEventListener('keydown', function (e) {
+      var d = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
+      if (d) { var n = tabs[(i + d + tabs.length) % tabs.length]; tab(n); n.focus(); }
+    });
+  });
+</script>
+</body>
+</html>
+
+
+
+
+

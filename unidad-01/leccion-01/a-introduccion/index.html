@@ -1,0 +1,260 @@
+<!doctype html>
+<!-- Ley 1826 de 2017 · Unidad 1 · Lección 1 · A: Introducción (revisión 3: escenario completo, mediaciones variadas, navegación interna al pie)
+     Fuente: ficha de la Unidad 1, p. 3 («Introducción»), dos párrafos completos.
+     Todo texto marcado con data-f es textual de la ficha; verificar con herramientas/verificar_cobertura.py -->
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Introducción · Lección 1 · Ley 1826 de 2017</title>
+<link rel="stylesheet" href="../comun/assets/vendor/fontawesome.min.css">
+<link rel="stylesheet" href="../comun/assets/vendor/solid.min.css">
+<link rel="stylesheet" href="../comun/base.css?v=conexion-1">
+<style>
+  .puerta-et{transition:opacity .45s,translate .45s}
+  .entra .lamina .persona-piloto{animation:llega .6s cubic-bezier(.2,.8,.3,1) both}
+  .escena:first-of-type .persona-piloto[data-pose=presenta] .brazo-frontal{transform-box:fill-box;transform-origin:16% 62%;animation:a1-senala .7s ease-out .25s both}
+  @keyframes a1-senala{from{transform:rotate(-5deg);opacity:.75}to{transform:rotate(0);opacity:1}}
+  .escena[data-estado=a3-como] .sobra{opacity:.12;translate:0 26px}
+  .escena[data-estado=a3-como] .corredor{translate:-60px 0;transition:translate .6s}
+  .receptora{transition:filter .4s}
+  .escena[data-estado=a3-objetivo] .receptora{filter:drop-shadow(0 0 10px var(--crema)) drop-shadow(0 0 3px var(--oxido))}
+  .acciones{display:flex;gap:8px;flex-wrap:wrap}
+  .acciones .btn[aria-expanded=true]{background:var(--oxido);border-color:var(--oxido);color:var(--blanco)}
+  .a1-punto{width:34px;height:34px}
+  .a1-punto .et{position:absolute;left:0;bottom:calc(100% + 10px);display:inline-flex;align-items:center;gap:6px;background:var(--hielo);border:1px solid var(--niebla);box-shadow:0 4px 12px #003f5e22}
+  .a1-punto .et i{color:var(--oxido);font-size:13px}
+  .a1-punto .et::after{content:"";position:absolute;left:15px;bottom:-10px;width:2px;height:9px;background:var(--oxido)}
+  .a3-guia{display:flex;align-items:center;gap:7px;color:var(--marino);font:600 12px/1.3 Roboto,Arial,sans-serif}
+  .a3-guia i{color:var(--oxido)}
+  .a3-mision{display:flex;flex-direction:column;gap:9px;padding:12px 14px 13px;background:var(--hielo);border:2px solid var(--teal);border-radius:16px;box-shadow:0 5px 0 var(--niebla)}
+  .a3-mision-cab{display:flex;align-items:center;justify-content:space-between;gap:12px;color:var(--marino);font:800 13px/1.3 Montserrat,Arial,sans-serif}
+  .a3-mision-cab i{color:var(--oxido);margin-right:7px}
+  .a3-mision-cab output{white-space:nowrap;color:var(--teal)}
+  .a3-controles{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .a3-controles .btn{position:relative;isolation:isolate;justify-content:flex-start;gap:9px;min-height:52px;background:var(--blanco);border:2px solid var(--teal);border-radius:12px;color:var(--marino);padding:6px 12px 6px 7px;font-size:13px;text-align:left;box-shadow:0 4px 0 var(--niebla),0 7px 14px rgba(0,63,94,.12)}
+  .a3-controles .btn .numero{display:grid;place-items:center;flex:none;width:25px;height:25px;border-radius:50%;background:var(--oxido);color:var(--blanco);font:800 12px Montserrat,Arial,sans-serif}
+  .a3-controles .btn:not(.visto)::after{content:"";position:absolute;inset:-5px;border:2px solid var(--oxido);border-radius:15px;pointer-events:none;animation:a3-latido 2.1s ease-out infinite}
+  .a3-controles .btn:nth-child(2):not(.visto)::after{animation-delay:.45s}
+  .a3-controles .btn[aria-expanded=true]::after{animation:none;opacity:0}
+  .a3-controles .btn.visto{border-color:var(--teal)}
+  .a3-controles .btn[aria-expanded=true]{background:var(--teal);border-color:var(--teal);color:var(--blanco)}
+  .a3-controles .btn[aria-expanded=true] .numero{background:var(--blanco);color:var(--marino)}
+  @keyframes a3-latido{0%{opacity:.8;transform:scale(1)}75%,100%{opacity:0;transform:scale(1.055)}}
+  @media(prefers-reduced-motion:reduce){.a3-controles .btn:not(.visto)::after{animation:none;opacity:.75}}
+  .a3-avance{width:100%;height:6px;accent-color:var(--teal)}
+  .a3-mision.completa{border-color:var(--teal);background:#E4F2F1}
+  .a3-mision.completa .a3-mision-cab output::after{content:" · Completado"}
+  .a3 .capa.a3-tarjeta{left:3%;right:38%;top:3%;bottom:auto;z-index:4;max-width:430px;padding:12px 15px 10px;font-size:14px;line-height:1.43;gap:5px;box-shadow:0 10px 24px rgba(0,27,37,.24),0 0 0 3px var(--blanco)}
+  .a3 .capa.a3-tarjeta .cerrar{margin-top:1px}
+  .a4{gap:9px}
+  .a4-ruta{display:flex;align-items:center;gap:8px;margin-top:16px;color:var(--marino);font:800 13px/1.3 Montserrat,Arial,sans-serif}
+  .a4-ruta i{color:var(--oxido)}
+  .lamina.a4-diagrama{width:100%;height:min(420px,calc(100% - 56px));min-height:0;aspect-ratio:auto;flex:none;align-self:center;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;align-items:stretch;padding:4px 4px 9px;margin:auto 0}
+  .a4-etapa{position:relative;display:flex;flex-direction:column;gap:8px;min-width:0;padding:11px;background:var(--blanco);color:var(--marino);text-align:left;border:2px solid var(--niebla);border-radius:16px;box-shadow:0 5px 0 var(--niebla),0 9px 16px rgba(0,63,94,.08);cursor:pointer;transition:transform .2s,border-color .2s}
+  .a4-etapa:hover,.a4-etapa:focus-visible{transform:translateY(-3px);border-color:var(--oxido)}
+  .a4-etapa:focus-visible{outline:3px solid var(--oxido);outline-offset:3px}
+  .a4-etapa:not(.visto)::after{content:"";position:absolute;inset:-5px;border:2px solid var(--oxido);border-radius:19px;pointer-events:none;animation:a3-latido 2.4s ease-out infinite}
+  .a4-etapa:nth-child(2):not(.visto)::after{animation-delay:.4s}
+  .a4-etapa:nth-child(3):not(.visto)::after{animation-delay:.8s}
+  .a4-etapa.visto{border-color:var(--teal)}
+  .a4-etapa svg{display:block;width:100%;height:clamp(120px,28vh,178px);background:var(--hielo);border-radius:10px}
+  .a4-etapa-head{display:flex;align-items:center;gap:8px;font:800 12px Montserrat,Arial,sans-serif;color:var(--teal)}
+  .a4-etapa-head b{display:grid;place-items:center;width:28px;height:28px;flex:none;border-radius:50%;background:var(--oxido);color:var(--blanco)}
+  .a4-etapa strong{font:800 16px/1.2 Montserrat,Arial,sans-serif;color:var(--marino)}
+  .a4-etapa small{font:400 13px/1.35 Roboto,Arial,sans-serif;color:var(--tinta)}
+  .a4-etapa .a4-accion{margin-top:auto;display:inline-flex;align-items:center;gap:6px;color:var(--teal);font:800 11px Montserrat,Arial,sans-serif}
+  .a4-etapa.visto .a4-accion::after{content:"✓ Revisado"}
+  .a4-etapa:not(.visto) .a4-accion::after{content:"Pulsa para explorar"}
+  .a4-diagrama .a4-capa{left:8%;right:8%;top:20%;bottom:auto;z-index:5;max-height:72%;overflow:auto;font-size:15px;line-height:1.45;box-shadow:0 12px 30px rgba(0,27,37,.28),0 0 0 3px var(--blanco)}
+  .a4-diagrama:has(>.a4-capa:not([hidden]))::before{content:"";position:absolute;inset:0;z-index:4;background:rgba(0,42,55,.35);border-radius:16px;pointer-events:none}
+  @media(max-width:760px){.lamina.a4-diagrama{height:auto;grid-template-columns:1fr;gap:7px;margin:0}.a4-etapa{display:grid;grid-template-columns:85px minmax(0,1fr);gap:3px 9px;padding:7px}.a4-etapa svg{grid-column:1;grid-row:1 / 5;width:85px;height:78px}.a4-etapa strong{font-size:13px}.a4-etapa small{font-size:11.5px}.a4-etapa-head b{width:21px;height:21px}.a4-etapa .a4-accion{font-size:10px}.a4-diagrama .a4-capa{position:fixed;left:5%;right:5%;top:15%;max-height:70dvh}}
+  @media(prefers-reduced-motion:reduce){.a4-etapa:not(.visto)::after{animation:none;opacity:.75}}
+  @media(max-width:760px){.a3 .capa.a3-tarjeta{position:relative;left:auto;right:auto;top:auto;bottom:auto;max-width:none;margin:8px 3% 0}}
+  @media(max-width:520px){
+    .a3-mision{padding:9px;gap:7px}
+    .a3-controles{gap:7px}
+    .a3-controles .btn{min-height:55px;padding:5px;font-size:11.5px}
+    .a3-controles .btn .numero{width:21px;height:21px}
+    .escena[data-titulo="Congestión judicial e impunidad"] .rejilla{grid-template-columns:1fr!important;gap:7px}
+    .escena[data-titulo="Congestión judicial e impunidad"] .giro{min-height:132px}
+    .escena[data-titulo="Congestión judicial e impunidad"] .giro .frente{flex-direction:row}
+    .escena[data-titulo="Congestión judicial e impunidad"] .giro .frente svg{width:39%;flex:none}
+    .escena[data-titulo="Congestión judicial e impunidad"] .giro .frente .pie{flex:1;font-size:13px;padding:8px}
+    .escena[data-titulo="Congestión judicial e impunidad"] .giro .reverso{font-size:13px;padding:8px 12px;gap:4px}
+  }
+</style>
+</head>
+<body>
+<main class="ova" data-ova>
+
+  <!-- Escena 1 · p. 3, primer párrafo, oración 1 -->
+  <section class="escena" data-titulo="Una reforma estructural">
+    <div class="texto">
+      <p class="tipo"><i class="fas fa-book-open" aria-hidden="true"></i>Lectura principal</p>
+      <h2 class="titulo">Una reforma estructural</h2>
+      <p class="frase" hidden><span data-f>El procedimiento penal especial abreviado fue introducido en Colombia mediante la <span class="marca">Ley 1826 de 2017</span></span>…</p>
+      <div class="capa en-texto" id="a1-paralelo" aria-labelledby="a1-paralelo-t">
+        <h3 id="a1-paralelo-t">Un procedimiento paralelo</h3>
+        <p>…<span data-f>y constituye una reforma estructural del sistema penal colombiano al determinar un procedimiento que se puede entender como <strong>paralelo al de la Ley 906 de 2004</strong></span>…</p>
+      </div>
+      <div class="capa en-texto" id="a1-acusador" aria-labelledby="a1-acusador-t">
+        <h3 id="a1-acusador-t">Una herramienta para las víctimas</h3>
+        <p>…<span data-f>e incorporar una herramienta procedimental dirigida a las víctimas: <strong>el acusador privado</strong>.</span></p>
+      </div>
+      <p class="instruccion"><i class="fas fa-circle-info" aria-hidden="true"></i>Seleccione los puntos de la ilustración para completar la idea.</p>
+    </div>
+    <div class="lamina">
+      <svg viewBox="0 0 700 428" data-dibujo="reforma"></svg>
+      <button class="punto a1-punto" type="button" data-capa="a1-paralelo" style="left:4%;top:32%"><span class="n">1</span><span class="et"><i class="fas fa-circle-info" aria-hidden="true"></i>Un procedimiento paralelo</span></button>
+      <button class="punto izq" type="button" data-capa="a1-acusador" style="left:65%;top:58%"><span class="n">2</span><span class="et">Dirigido a las víctimas</span></button>
+    </div>
+  </section>
+
+  <!-- Escena 2 · p. 3, primer párrafo, oración 2 · tarjetas con imagen que giran -->
+  <section class="escena ancho" data-titulo="Congestión judicial e impunidad" hidden>
+    <div class="texto">
+      <p class="tipo"><i class="fas fa-book-open" aria-hidden="true"></i>Lectura principal</p>
+      <h2 class="titulo">Congestión judicial e impunidad</h2>
+      <p class="instruccion"><i class="fas fa-circle-info" aria-hidden="true"></i>Gire las tarjetas en orden: juntas forman la idea completa.</p>
+    </div>
+    <div class="rejilla" style="grid-template-columns:repeat(3,minmax(0,1fr))">
+      <button class="giro" type="button"><span class="cara frente"><svg viewBox="0 0 240 150" data-dibujo="g-proposito"></svg><span class="pie">1 · El propósito<i class="fas fa-arrow-right" aria-hidden="true"></i></span></span>
+        <span class="cara reverso"><span class="h3">1 · El propósito</span><span><span data-f>Esta figura tiene el propósito de enfrentar los altos índices de <strong>congestión judicial e impunidad</strong></span>…</span></span></button>
+      <button class="giro" type="button"><span class="cara frente"><svg viewBox="0 0 240 150" data-dibujo="g-sistema"></svg><span class="pie">2 · El sistema tradicional<i class="fas fa-arrow-right" aria-hidden="true"></i></span></span>
+        <span class="cara reverso"><span class="h3">2 · El sistema tradicional</span><span>…<span data-f>que caracterizan al <strong>sistema acusatorio tradicional</strong>,</span></span></span></button>
+      <button class="giro" type="button"><span class="cara frente"><svg viewBox="0 0 240 150" data-dibujo="g-conductas"></svg><span class="pie">3 · ¿Frente a qué conductas?<i class="fas fa-arrow-right" aria-hidden="true"></i></span></span>
+        <span class="cara reverso"><span class="h3">3 · ¿Frente a qué conductas?</span><span>…<span data-f>sobre todo frente a conductas punibles de <strong>menor lesividad, pero de alta ocurrencia y sensibilidad social</strong>.</span></span></span></button>
+    </div>
+  </section>
+
+  <!-- Escena 3 · p. 3, segundo párrafo, oraciones 1 y 2 -->
+  <section class="escena a3" data-titulo="La finalidad primordial" hidden>
+    <div class="texto">
+      <p class="tipo"><i class="fas fa-book-open" aria-hidden="true"></i>Lectura principal</p>
+      <h2 class="titulo">La finalidad primordial</h2>
+      <p class="frase" hidden><span data-f>La finalidad primordial de este procedimiento especial es <span class="marca">simplificar y acelerar el trámite procesal</span></span>…</p>
+      <div class="a3-mision" aria-label="Pulse las dos claves de la finalidad">
+        <div class="a3-mision-cab"><span><i class="fas fa-bullseye" aria-hidden="true"></i>Pulsa las dos claves</span><output id="a3-cuenta" aria-live="polite">0 de 2</output></div>
+        <div class="a3-controles" role="group" aria-label="Explore la finalidad y el objetivo">
+          <button class="btn sec" type="button" data-capa="a3-como"><span class="numero" aria-hidden="true">1</span>Reducción de etapas</button>
+          <button class="btn sec" type="button" data-capa="a3-objetivo"><span class="numero" aria-hidden="true">2</span>Respuesta a las víctimas</button>
+        </div>
+        <progress class="a3-avance" id="a3-avance" value="0" max="2" aria-label="Exploración de las dos claves"></progress>
+      </div>
+    </div>
+    <div class="lamina">
+      <svg viewBox="0 0 700 428" data-dibujo="finalidad"></svg>
+      <div class="capa a3-tarjeta" id="a3-como" aria-labelledby="a3-como-t">
+        <h3 id="a3-como-t">Reducción de etapas y audiencias</h3>
+        <p>…<span data-f>mediante la <strong>reducción de las etapas y audiencias judiciales</strong> que pueden resultar innecesarias para los delitos en los cuales procede.</span></p>
+      </div>
+      <div class="capa a3-tarjeta" id="a3-objetivo" aria-labelledby="a3-objetivo-t">
+        <h3 id="a3-objetivo-t">Respuesta ágil a las víctimas</h3>
+        <p><span data-f>Su objetivo es garantizar una <strong>pronta y efectiva administración de justicia</strong>, con <strong>respuesta ágil a las víctimas</strong>.</span></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Escena 4 · p. 3, segundo párrafo, oraciones 3 y 4 · secuencia de cambio procesal -->
+  <section class="escena ancho a4" data-titulo="Un nuevo modelo" hidden>
+    <div class="texto">
+      <p class="tipo"><i class="fas fa-book-open" aria-hidden="true"></i>Lectura principal</p>
+      <h2 class="titulo">Un nuevo modelo</h2>
+    </div>
+    <p class="a4-ruta"><i class="fas fa-route" aria-hidden="true"></i>Sigue el cambio del modelo en tres pasos</p>
+    <div class="lamina a4-diagrama" aria-label="Proceso en tres pasos: audiencias, fase escrita e intervención judicial">
+      <button class="a4-etapa" type="button" data-capa="a4-ritual"><svg viewBox="0 0 700 428" data-dibujo="pano"></svg><span class="a4-etapa-head"><b>1</b>Modelo de partida</span><strong>Justicia de ritual</strong><small>Basada en audiencias.</small><span class="a4-accion" aria-hidden="true"></span></button>
+      <button class="a4-etapa" type="button" data-capa="a4-escrito"><svg viewBox="700 0 700 428" data-dibujo="pano"></svg><span class="a4-etapa-head"><b>2</b>Fase inicial</span><strong>Por escrito y de forma directa</strong><small>Vinculación e investigación.</small><span class="a4-accion" aria-hidden="true"></span></button>
+      <button class="a4-etapa" type="button" data-capa="a4-juez"><svg viewBox="1400 0 700 428" data-dibujo="pano"></svg><span class="a4-etapa-head"><b>3</b>Intervención judicial</span><strong>Debate y resolución</strong><small>Debate probatorio y situación jurídica sustancial.</small><span class="a4-accion" aria-hidden="true"></span></button>
+      <div class="capa a4-capa" id="a4-ritual" aria-labelledby="a4-ritual-t">
+        <h3 id="a4-ritual-t">1 · La sala de audiencias</h3>
+        <p><span data-f>Con ella se transita de un modelo de <strong>justicia de ritual basado en las audiencias</strong></span>…</p>
+      </div>
+      <div class="capa a4-capa" id="a4-escrito" aria-labelledby="a4-escrito-t">
+        <h3 id="a4-escrito-t">2 · El despacho</h3>
+        <p>…<span data-f>hacia uno en el que la fase inicial de vinculación e investigación se desarrolla en su mayor parte <strong>por escrito y de forma directa</strong>.</span></p>
+      </div>
+      <div class="capa a4-capa" id="a4-juez" aria-labelledby="a4-juez-t">
+        <h3 id="a4-juez-t">3 · El estrado</h3>
+        <p><span data-f>Este nuevo modelo reserva la intervención judicial para el <strong>debate probatorio</strong> y la <strong>resolución de la situación jurídica sustancial</strong>.</span></p>
+      </div>
+    </div>
+  </section>
+
+</main>
+<script src="../comun/personajes.js"></script>
+<script src="../comun/objetos-juridicos.js"></script>
+<script>
+  window.DIBUJOS = {
+    reforma: function (P) {
+      var C = P.C, o = P.obj, s = '';
+      s += o.suelo(372);
+      s += '<rect x="226" y="56" width="12" height="320" rx="5" fill="' + C.marino + '"/>';
+      s += '<path d="M240 40 H452 L478 66 L452 92 H240 Z" fill="' + C.teal + '"/>' + '<text x="254" y="73" font-family="Montserrat,Arial" font-weight="800" font-size="19" fill="#fff">Ley 1826 de 2017</text>';
+      s += '<path d="M224 110 H44 L18 136 L44 162 H224 Z" fill="' + C.celeste + '"/>' + '<text x="50" y="143" font-family="Montserrat,Arial" font-weight="800" font-size="19" fill="' + C.marino + '">Ley 906 de 2004</text>';
+      s += P.objJ.documento(290, 208, 1.1, C.oxido);
+      s += P.objJ.flecha(403, 264, 506, 264, C.oxido);
+      s += P.objJ.expediente(518, 212, 1.15, C.teal);
+      s += o.etiqueta(350, 346, 'Reforma procesal', C.marino, C.blanco, 12);
+      s += o.etiqueta(573, 346, 'Acusador privado', C.teal, C.blanco, 12);
+      s += o.planta(60, 376, .9);
+      return s;
+    },
+    'g-proposito': function (P) {
+      var C = P.C, o = P.obj;
+      return o.carpetas(30, 146, 10) + o.carpetas(100, 146, 7) + o.carpetas(160, 146, 12) + o.reloj(205, 30, 20);
+    },
+    'g-sistema': function (P) {
+      var C = P.C, o = P.obj;
+      return o.estrado(68, 103, 104, 46, C.teal) + o.carpetas(35, 98, 6) + o.carpetas(160, 98, 5) + P.objJ.mazo(88, 45, .42);
+    },
+    'g-conductas': function (P) {
+      var C = P.C, o = P.obj;
+      return P.objJ.documento(35, 35, .65, C.oxido) + P.objJ.documento(95, 20, .7, C.teal) +
+        P.objJ.documento(162, 38, .65, C.marino) + o.etiqueta(120, 146, 'Más casos', C.teal, C.blanco, 11);
+    },
+    finalidad: function (P) {
+      var C = P.C, o = P.obj, s = '';
+      s += o.suelo(372);
+      s += '<rect x="20" y="366" width="640" height="12" rx="6" fill="' + C.niebla + '"/>';
+      var sobra = [1, 3, 4];
+      for (var i = 0; i < 6; i++) {
+        s += '<g class="puerta-et' + (sobra.indexOf(i) > -1 ? ' sobra' : '') + '">' + o.puerta(40 + i * 66, 250, 36, 66, i % 2 ? C.celeste : C.teal) + '</g>';
+      }
+      s += '<g class="corredor">' + P.objJ.documento(410, 210, 1.18, C.oxido) + '</g>';
+      s += '<g class="receptora">' + P.objJ.bandeja(555, 305, .9, C.teal) + '</g>';
+      s += P.objJ.flecha(512, 265, 584, 265, C.oxido);
+      s += o.reloj(600, 76, 30);
+      return s;
+    },
+    /* Escenario 360°: tres zonas de 700 px que se recorren girando (la pista se repite) */
+    pano: function (P) {
+      var C = P.C, o = P.obj, s = '';
+      s += '<rect width="2100" height="428" fill="#F6F2DA"/>' + o.suelo(372, 2100);
+      // Zona 1 · sala de audiencias (justicia de ritual)
+      s += o.calendario(40, 40, 64, '1ª', 'AUD.', '') + o.calendario(120, 40, 64, '2ª', 'AUD.', '') + o.calendario(200, 40, 64, '3ª', 'AUD.', '');
+      s += o.estrado(300, 230, 200, 142, C.teal) + P.objJ.mazo(335, 167, .8);
+      s += P.objJ.expediente(80, 248, .9, C.marino) + P.objJ.expediente(550, 248, .9, C.oxido);
+      s += o.etiqueta(400, 412, 'Sala de audiencias', C.marino, '#fff', 12);
+      // Zona 2 · despacho (por escrito y de forma directa)
+      s += '<g transform="translate(700 0)">' + o.escritorio(105, 320, 210) + P.objJ.expediente(135, 208, .93, C.teal) +
+        o.hoja(300, 220, .9, -12, 'flota') + o.hoja(360, 246, .9, 8, 'flota') +
+        P.objJ.bandeja(480, 290, 1, C.marino) +
+        o.planta(640, 380, .9) + o.etiqueta(330, 412, 'Despacho', C.marino, '#fff', 12) + '</g>';
+      // Zona 3 · estrado (debate probatorio y resolución)
+      s += '<g transform="translate(1400 0)">' + o.caja(70, 300, 90, false) + o.lupa(190, 290, 22) +
+        o.estrado(260, 230, 200, 142, C.teal) + P.objJ.mazo(320, 160, .9) +
+        o.balanza(590, 170, .6) + o.etiqueta(360, 412, 'Estrado', C.marino, '#fff', 12) + '</g>';
+      return s;
+    }
+  };
+</script>
+<script src="../comun/escena.js?v=mision-a3-1"></script>
+</body>
+</html>
+
+
+
+
+
