@@ -26,11 +26,14 @@
       '<rect x="15" y="69" width="46" height="5" rx="2.5" fill="' + C.blanco + '" opacity=".6"/>' +
       '</g>';
   };
+  /* Juan y Esteban (26–27/10/2026): sin martillo ni balanza. «mazo» dibuja ahora un sello oficial sobre su base,
+     en el mismo espacio, para no alterar las escenas que lo usan. */
   J.mazo = function (x, y, s) {
-    return '<g class="obj-mazo" transform="translate(' + x + ' ' + y + ') scale(' + (s || 1) + ')">' +
+    return '<g class="obj-mazo obj-sello" transform="translate(' + x + ' ' + y + ') scale(' + (s || 1) + ')">' +
       '<rect x="19" y="81" width="107" height="13" rx="5" fill="' + C.marino + '"/>' +
-      '<rect x="28" y="72" width="89" height="12" rx="4" fill="' + C.oxido + '"/>' +
-      '<g transform="rotate(-35 73 47)"><rect x="68" y="33" width="10" height="59" rx="4" fill="' + C.madera + '"/><rect x="38" y="22" width="70" height="26" rx="6" fill="' + C.madera + '"/><rect x="45" y="22" width="12" height="26" fill="' + C.oxido + '"/><rect x="89" y="22" width="12" height="26" fill="' + C.oxido + '"/></g>' +
+      '<path d="M42 81 L49 56 H97 L104 81 Z" fill="' + C.oxido + '"/>' +
+      '<rect x="64" y="24" width="18" height="34" rx="6" fill="' + C.madera + '"/><circle cx="73" cy="20" r="13" fill="' + C.madera + '"/>' +
+      '<rect x="50" y="86" width="46" height="3.5" rx="1.75" fill="' + C.crema + '" opacity=".8"/>' +
       '</g>';
   };
   J.flecha = function (x1, y1, x2, y2, color, clase) {

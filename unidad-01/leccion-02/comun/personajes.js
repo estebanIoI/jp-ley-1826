@@ -200,15 +200,15 @@
       '<rect class="aguja-min" x="-2" y="' + (-r * 0.72) + '" width="4" height="' + (r * 0.72) + '" rx="2" fill="' + C.niebla + '"/>' +
       '<rect class="aguja-hora" x="-2.5" y="' + (-r * 0.5) + '" width="5" height="' + (r * 0.5) + '" rx="2" fill="' + C.niebla + '" transform="rotate(62)"/><circle r="' + (r * 0.07) + '" fill="' + C.niebla + '"/></g>';
   };
+  /* Juan y Esteban (26–27/10/2026): sin balanza ni martillo. «balanza» dibuja ahora el escudo de las garantías en el
+     mismo espacio (centrado en x, de y a y + 160), para no alterar las escenas que lo usan. */
   O.balanza = function (x, y, s, clase) {
     s = s || 1;
-    var plato = function (px) {
-      return '<g class="plato" transform="translate(' + px + ' 0)"><path d="M0 0 L-22 46 M0 0 L22 46" stroke="' + C.gris + '" stroke-width="1.6"/><path d="M-30 46 H30 Q26 60 0 60 Q-26 60 -30 46 Z" fill="' + C.oxido + '"/></g>';
-    };
-    return '<g class="balanza ' + (clase || '') + '" transform="translate(' + x + ' ' + y + ') scale(' + s + ')">' +
-      '<rect x="-5" y="0" width="10" height="150" fill="' + C.marino + '"/><path d="M-38 160 Q-38 146 -20 146 H20 Q38 146 38 160 Z" fill="' + C.marino + '"/>' +
-      '<g class="viga"><rect x="-100" y="-4" width="200" height="8" rx="4" fill="' + C.teal + '"/>' + plato(-96) + plato(96) + '</g>' +
-      '<circle cx="0" cy="0" r="11" fill="' + C.crema + '" stroke="' + C.teal + '" stroke-width="4"/></g>';
+    return '<g class="balanza escudo-garantias ' + (clase || '') + '" transform="translate(' + x + ' ' + y + ') scale(' + s + ')">' +
+      '<ellipse cx="0" cy="160" rx="62" ry="7" fill="' + C.marino + '" opacity=".12"/>' +
+      '<path d="M0 -4 L74 20 V72 Q74 130 0 158 Q-74 130 -74 72 V20 Z" fill="' + C.teal + '"/>' +
+      '<path d="M0 12 L58 31 V72 Q58 118 0 142 Q-58 118 -58 72 V31 Z" fill="' + C.blanco + '" opacity=".14"/>' +
+      '<path d="M-30 76 L-8 98 L34 52" fill="none" stroke="' + C.crema + '" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/></g>';
   };
   O.muro = function (x, y, w, h) {
     var s = '<g transform="translate(' + x + ' ' + y + ')"><rect width="' + w + '" height="' + h + '" fill="' + C.oxido + '"/>';
